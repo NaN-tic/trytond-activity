@@ -300,7 +300,7 @@ msgstr "Actividades"
 
 msgctxt "model:ir.ui.menu,name:menu_activity_calendar"
 msgid "Activities"
-msgstr "Activitats"
+msgstr "Actividades"
 
 msgctxt "model:ir.ui.menu,name:menu_activity_configuration"
 msgid "Configuration"

@@ -2,15 +2,15 @@
 # the top level of this repository contains the full copyright notices and
 # license terms.
 from trytond.pool import Pool
-from .configuration import *
+from . import configuration
 from .activity import *
 from .party import *
 
 
 def register():
     Pool.register(
-        Configuration,
-        CompanyConfiguration,
+        configuration.Configuration,
+        configuration.ConfigurationSequence,
         ActivityType,
         ActivityReference,
         Activity,

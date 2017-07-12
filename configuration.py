@@ -1,69 +1,69 @@
 # The COPYRIGHT file at the top level of this repository contains the full
 # copyright notices and license terms.
-from trytond.model import ModelSQL, ModelView, fields
+from trytond import backend
+from trytond.model import ModelSingleton, ModelSQL, ModelView, fields
 from trytond.pool import Pool
-from trytond.transaction import Transaction
+from trytond.pyson import Eval
+from trytond.modules.company.model import (
+    CompanyMultiValueMixin, CompanyValueMixin)
 
-__all__ = ['Configuration', 'CompanyConfiguration']
+__all__ = ['Configuration', 'ConfigurationSequence']
 
 
-class Configuration(ModelSQL, ModelView):
+class Configuration(
+        ModelSingleton, ModelSQL, ModelView, CompanyMultiValueMixin):
     'Activity Configuration'
     __name__ = 'activity.configuration'
-    activity_sequence = fields.Function(fields.Many2One('ir.sequence',
+    activity_sequence = fields.MultiValue(fields.Many2One('ir.sequence',
             'Activity Sequence', required=True,
             domain=[
+                ('company', 'in',
+                    [Eval('context', {}).get('company', -1), None]),
                 ('code', '=', 'activity.activity'),
-                ]),
-        'get_company_config', 'set_company_config')
+                ]))
 
     @classmethod
-    def get_company_config(self, configs, names):
+    def multivalue_model(cls, field):
         pool = Pool()
-        CompanyConfig = pool.get('activity.configuration.company')
-
-        company_id = Transaction().context.get('company')
-        company_configs = CompanyConfig.search([
-                ('company', '=', company_id),
-                ])
-
-        res = {}
-        for fname in names:
-            res[fname] = {
-                configs[0].id: None,
-                }
-            if company_configs:
-                val = getattr(company_configs[0], fname)
-                if isinstance(val, ModelSQL):
-                    val = val.id
-                res[fname][configs[0].id] = val
-        return res
+        if field == 'activity_sequence':
+            return pool.get('activity.configuration.sequence')
+        return super(Configuration, cls).multivalue_model(field)
 
     @classmethod
-    def set_company_config(self, configs, name, value):
-        pool = Pool()
-        CompanyConfig = pool.get('activity.configuration.company')
-
-        company_id = Transaction().context.get('company')
-        company_configs = CompanyConfig.search([
-                ('company', '=', company_id),
-                ])
-        if company_configs:
-            company_config = company_configs[0]
-        else:
-            company_config = CompanyConfig(company=company_id)
-        setattr(company_config, name, value)
-        company_config.save()
+    def default_activity_sequence(cls, **pattern):
+        field_name = 'activity_sequence'
+        return getattr(
+            cls.multivalue_model(field_name),
+            'default_%s' % field_name, lambda: None)()
 
 
-class CompanyConfiguration(ModelSQL):
-    'Activity Configuration per Company'
-    __name__ = 'activity.configuration.company'
+class ConfigurationSequence(ModelSQL, CompanyValueMixin):
+    'Activity Sequence Configuration'
+    __name__ = 'activity.configuration.sequence'
 
-    company = fields.Many2One('company.company', 'Company', required=True,
-        ondelete='CASCADE', select=True)
     activity_sequence = fields.Many2One('ir.sequence',
         'Activity Sequence', required=True,
         domain=[
+            ('company', 'in', [Eval('company', -1), None]),
             ('code', '=', 'activity.activity'),
-            ])
+            ],
+        depends=['company'])
+
+    @classmethod
+    def __register__(cls, module_name):
+        TableHandler = backend.get('TableHandler')
+        old_table = 'activity_configuration_company'
+        if (not TableHandler.table_exist(cls._table)
+                and TableHandler.table_exist(old_table)):
+            TableHandler.table_rename(old_table, cls._table)
+
+        super(ConfigurationSequence, cls).__register__(module_name)
+
+    @classmethod
+    def default_activity_sequence(cls):
+        pool = Pool()
+        ModelData = pool.get('ir.model.data')
+        try:
+            return ModelData.get_id('activity', 'sequence_activity')
+        except KeyError:
+            return None

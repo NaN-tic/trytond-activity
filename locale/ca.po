@@ -106,35 +106,35 @@ msgctxt "field:activity.configuration,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
-msgctxt "field:activity.configuration.company,activity_sequence:"
+msgctxt "field:activity.configuration.sequence,activity_sequence:"
 msgid "Activity Sequence"
 msgstr "Seqüencia activitats"
 
-msgctxt "field:activity.configuration.company,company:"
+msgctxt "field:activity.configuration.sequence,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:activity.configuration.company,create_date:"
+msgctxt "field:activity.configuration.sequence,create_date:"
 msgid "Create Date"
 msgstr "Data de creació"
 
-msgctxt "field:activity.configuration.company,create_uid:"
+msgctxt "field:activity.configuration.sequence,create_uid:"
 msgid "Create User"
 msgstr "Usuari de creació"
 
-msgctxt "field:activity.configuration.company,id:"
+msgctxt "field:activity.configuration.sequence,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:activity.configuration.company,rec_name:"
+msgctxt "field:activity.configuration.sequence,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:activity.configuration.company,write_date:"
+msgctxt "field:activity.configuration.sequence,write_date:"
 msgid "Write Date"
 msgstr "Data de modificació"
 
-msgctxt "field:activity.configuration.company,write_uid:"
+msgctxt "field:activity.configuration.sequence,write_uid:"
 msgid "Write User"
 msgstr "Usuari de modificació"
 
@@ -214,9 +214,9 @@ msgctxt "model:activity.configuration,name:"
 msgid "Activity Configuration"
 msgstr "Configuració activitats"
 
-msgctxt "model:activity.configuration.company,name:"
-msgid "Activity Configuration per Company"
-msgstr "Configuració activitats per empresa"
+msgctxt "model:activity.configuration.sequence,name:"
+msgid "Activity Sequence Configuration"
+msgstr "Configuració seqüencies activitats"
 
 msgctxt "model:activity.reference,name:"
 msgid "Activity Reference"
@@ -299,6 +299,10 @@ msgid "Activities"
 msgstr "Activitats"
 
 msgctxt "model:ir.ui.menu,name:menu_activity_activity"
+msgid "Activities"
+msgstr "Activitats"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_calendar"
 msgid "Activities"
 msgstr "Activitats"
 

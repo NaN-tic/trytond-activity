@@ -106,35 +106,35 @@ msgctxt "field:activity.configuration,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
-msgctxt "field:activity.configuration.company,activity_sequence:"
+msgctxt "field:activity.configuration.sequence,activity_sequence:"
 msgid "Activity Sequence"
 msgstr "Secuencia actividad"
 
-msgctxt "field:activity.configuration.company,company:"
+msgctxt "field:activity.configuration.sequence,company:"
 msgid "Company"
 msgstr "Empresa"
 
-msgctxt "field:activity.configuration.company,create_date:"
+msgctxt "field:activity.configuration.sequence,create_date:"
 msgid "Create Date"
 msgstr "Fecha de creación"
 
-msgctxt "field:activity.configuration.company,create_uid:"
+msgctxt "field:activity.configuration.sequence,create_uid:"
 msgid "Create User"
 msgstr "Usuario de creación"
 
-msgctxt "field:activity.configuration.company,id:"
+msgctxt "field:activity.configuration.sequence,id:"
 msgid "ID"
 msgstr "ID"
 
-msgctxt "field:activity.configuration.company,rec_name:"
+msgctxt "field:activity.configuration.sequence,rec_name:"
 msgid "Name"
 msgstr "Nombre"
 
-msgctxt "field:activity.configuration.company,write_date:"
+msgctxt "field:activity.configuration.sequence,write_date:"
 msgid "Write Date"
 msgstr "Fecha de modificación"
 
-msgctxt "field:activity.configuration.company,write_uid:"
+msgctxt "field:activity.configuration.sequence,write_uid:"
 msgid "Write User"
 msgstr "Usuario de modificación"
 
@@ -214,9 +214,9 @@ msgctxt "model:activity.configuration,name:"
 msgid "Activity Configuration"
 msgstr "Configuración actividades"
 
-msgctxt "model:activity.configuration.company,name:"
-msgid "Activity Configuration per Company"
-msgstr "Configuración actividades por empresa"
+msgctxt "model:activity.configuration.sequence,name:"
+msgid "Activity Sequence Configuration"
+msgstr "Configuración sequencias actividades"
 
 msgctxt "model:activity.reference,name:"
 msgid "Activity Reference"
@@ -249,6 +249,10 @@ msgstr "Email saliente"
 msgctxt "model:ir.action,name:act_activity_activity"
 msgid "Activity"
 msgstr "Actividad"
+
+msgctxt "model:ir.action,name:act_activity_calendar"
+msgid "Activities"
+msgstr "Actividades"
 
 msgctxt "model:ir.action,name:act_activity_configuration"
 msgid "Configuration"

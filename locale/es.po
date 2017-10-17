@@ -52,7 +52,7 @@ msgstr "Ubicación"
 
 msgctxt "field:activity.activity,party:"
 msgid "Party"
-msgstr "Terceros"
+msgstr "Tercero"
 
 msgctxt "field:activity.activity,rec_name:"
 msgid "Name"

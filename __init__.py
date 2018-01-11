@@ -3,19 +3,19 @@
 # license terms.
 from trytond.pool import Pool
 from . import configuration
-from .activity import *
-from .party import *
+from . import activity
+from . import party
 
 
 def register():
     Pool.register(
         configuration.Configuration,
         configuration.ConfigurationSequence,
-        ActivityType,
-        ActivityReference,
-        Activity,
-        Party,
+        activity.ActivityType,
+        activity.ActivityReference,
+        activity.Activity,
+        party.Party,
         module='activity', type_='model')
     Pool.register(
-        PartyReplace,
+        party.PartyReplace,
         module='carrier', type_='wizard')

@@ -2,6 +2,8 @@
 # copyright notices and license terms.
 import datetime
 
+from sql import Null
+
 from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.pool import Pool
 from trytond.transaction import Transaction
@@ -83,7 +85,7 @@ class Activity(ModelSQL, ModelView):
             cursor.execute(*sql_table.update(
                     columns=[sql_table.code],
                     values=[sql_table.id],
-                    where=sql_table.code == None))
+                    where=sql_table.code == Null))
             table.not_null_action('code', action='add')
 
         # Migration from 3.4.1: subject is no more required

@@ -19,5 +19,5 @@ class PartyReplace:
     @classmethod
     def fields_to_replace(cls):
         return super(PartyReplace, cls).fields_to_replace() + [
-            ('activity', 'party'),
+            ('activity.activity', 'party'),
             ]

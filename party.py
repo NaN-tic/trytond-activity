@@ -6,14 +6,12 @@ from trytond.pool import PoolMeta
 __all__ = ['Party', 'PartyReplace']
 
 
-class Party:
+class Party(metaclass=PoolMeta):
     __name__ = "party.party"
-    __metaclass__ = PoolMeta
     activities = fields.One2Many('activity.activity', 'party', 'Activities')
 
 
-class PartyReplace:
-    __metaclass__ = PoolMeta
+class PartyReplace(metaclass=PoolMeta):
     __name__ = 'party.replace'
 
     @classmethod

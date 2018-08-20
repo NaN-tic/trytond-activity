@@ -188,7 +188,7 @@ contains the full copyright notices and license terms. -->
         <!-- Main Menu -->
         <menuitem id="menu_activity" name="Activities" sequence="1"/>
         <menuitem parent="menu_activity" id="menu_configuration"
-            name="Configuration" sequence="0" icon="tryton-preferences"/>
+            name="Configuration" sequence="0" icon="tryton-settings"/>
 
         <menuitem action="act_activity_activity" id="menu_activity_activity"
             parent="menu_activity" sequence="1" name="Activities"/>

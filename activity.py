@@ -8,6 +8,8 @@ from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond import backend
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 
 __all__ = ['ActivityType', 'ActivityReference', 'Activity']
 
@@ -56,10 +58,6 @@ class Activity(ModelSQL, ModelView):
         super(Activity, cls).__setup__()
         cls._order.insert(0, ('dtstart', 'DESC'))
         cls._order.insert(1, ('subject', 'DESC'))
-        cls._error_messages.update({
-                'no_activity_sequence': ('There is no activity sequence '
-                    'defined. Please define on in activity configuration.')
-                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -165,7 +163,7 @@ class Activity(ModelSQL, ModelView):
 
         sequence = Config(1).activity_sequence
         if not sequence:
-            cls.raise_user_error('no_activity_sequence')
+            raise UserError(gettext('activity.no_activity_sequence'))
         vlist = [x.copy() for x in vlist]
         for vals in vlist:
             vals['code'] = Sequence.get_id(sequence.id)

@@ -125,7 +125,7 @@ class Activity(ModelSQL, ModelView):
 
     @staticmethod
     def default_resource():
-        return ''
+        return None
 
     @classmethod
     def default_party(cls):
@@ -149,9 +149,10 @@ class Activity(ModelSQL, ModelView):
     @classmethod
     def get_resource(cls):
         'Return list of Model names for resource Reference'
-        ActivityType = Pool().get('activity.reference')
-        res = [('', '')]
-        for _type in ActivityType.search([]):
+        Reference = Pool().get('activity.reference')
+
+        res = [(None, '')]
+        for _type in Reference.search([]):
             res.append((_type.model.model, _type.model.name))
         return res
 

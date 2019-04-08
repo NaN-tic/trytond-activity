@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:activity.activity:"
-msgid ""
-"There is no activity sequence defined. Please define on in activity "
-"configuration."
-msgstr ""
-"No hi ha cap seqüencia definida per les activitats. Siusplau, definiu-n'hi "
-"una a la configuració."
-
 msgctxt "field:activity.activity,activity_type:"
 msgid "Type"
 msgstr "Tipus"
@@ -55,7 +47,7 @@ msgid "Party"
 msgstr "Tercer"
 
 msgctxt "field:activity.activity,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:activity.activity,resource:"
@@ -95,7 +87,7 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:activity.configuration,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:activity.configuration,write_date:"
@@ -127,7 +119,7 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:activity.configuration.sequence,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:activity.configuration.sequence,write_date:"
@@ -155,7 +147,7 @@ msgid "Model"
 msgstr "Model"
 
 msgctxt "field:activity.reference,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:activity.reference,write_date:"
@@ -187,7 +179,7 @@ msgid "Name"
 msgstr "Nom"
 
 msgctxt "field:activity.type,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nom"
 
 msgctxt "field:activity.type,sequence:"
@@ -285,6 +277,14 @@ msgstr "No realitzada"
 msgctxt "model:ir.action.act_window.domain,name:act_activity_domain_planned"
 msgid "Planned"
 msgstr "Planificada"
+
+msgctxt "model:ir.message,text:no_activity_sequence"
+msgid ""
+"There is no activity sequence defined. Please define on in activity "
+"configuration."
+msgstr ""
+"No hi ha una seqüència d'activitat definida. Si us plau definir en la "
+"configuració de l'activitat."
 
 msgctxt "model:ir.sequence,name:sequence_activity"
 msgid "Activity"

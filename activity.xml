@@ -178,7 +178,12 @@ contains the full copyright notices and license terms. -->
         </record>
 
         <!-- Main Menu -->
-        <menuitem id="menu_activity" name="Activities" sequence="1"/>
+        <record model="ir.ui.icon" id="activity_icon">
+            <field name="name">activity</field>
+            <field name="path">icons/activity.svg</field>
+        </record>
+
+        <menuitem id="menu_activity" name="Activities" sequence="1" icon="activity"/>
         <menuitem parent="menu_activity" id="menu_configuration"
             name="Configuration" sequence="0" icon="tryton-settings"/>
 

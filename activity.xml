@@ -35,6 +35,9 @@ contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_activity_activity">
             <field name="name">Activity</field>
             <field name="res_model">activity.activity</field>
+            <field name="search_value"
+                eval="[('employee', 'ilike', Eval('context', {}).get('employee.rec_name', '%'))]"
+                pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_activity_activity_view1">
             <field name="sequence" eval="10"/>
@@ -48,20 +51,18 @@ contains the full copyright notices and license terms. -->
         </record>
 
         <!-- ir.action.act_window.domain -->
-        <record model="ir.action.act_window.domain" id="act_activity_domain_my_pending">
-          <field name="name">My Pending Activities</field>
+        <record model="ir.action.act_window.domain" id="act_activity_domain_pending">
+          <field name="name">Planned Today</field>
           <field name="sequence" eval="10"/>
           <field name="domain" eval="[('dtstart', '&lt;', DateTime(hour=0, minute=0, second=0, microsecond=0, delta_days=1)),
-              ('employee', '=', Eval('context', {}).get('employee', -1)),
               ('state', '=', 'planned')]" pyson="1"/>
           <field name="act_window" ref="act_activity_activity"/>
           <field name="count" eval="True"/>
         </record>
-        <record model="ir.action.act_window.domain" id="act_activity_domain_my_planned">
-            <field name="name">My Planned Activities</field>
+        <record model="ir.action.act_window.domain" id="act_activity_domain_planned">
+            <field name="name">Planned</field>
             <field name="sequence" eval="20"/>
             <field name="domain" eval="[('dtstart', '>', DateTime(hour=0, minute=0,second=0, microsecond=0, delta_days=1)),
-                ('employee', '=', Eval('context', {}).get('employee', -1)),
                 ('state', '=', 'planned')]" pyson="1"/>
             <field name="act_window" ref="act_activity_activity"/>
             <field name="count" eval="True"/>

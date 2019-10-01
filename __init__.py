@@ -5,6 +5,7 @@ from trytond.pool import Pool
 from . import configuration
 from . import activity
 from . import party
+from . import employee
 
 
 def register():
@@ -14,7 +15,9 @@ def register():
         activity.ActivityType,
         activity.ActivityReference,
         activity.Activity,
+        activity.ActivityCalendarContext,
         party.Party,
+        employee.Employee,
         module='activity', type_='model')
     Pool.register(
         party.PartyReplace,

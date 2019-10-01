@@ -1,11 +1,15 @@
 <?xml version="1.0"?>
 <!--The COPYRIGHT file at the top level of this repository
 contains the full copyright notices and license terms. -->
-<form>
+<form col="6">
     <label name="name"/>
     <field name="name"/>
+    <label name="default_duration"/>
+    <field name="default_duration"/>
     <label name="active"/>
     <field name="active"/>
+    <label name="color"/>
+    <field name="color"/>
     <label name="sequence"/>
     <field name="sequence"/>
 </form>

@@ -1,0 +1,6 @@
+<data>
+    <xpath expr="/form/field[@name='end_date']" position="after">
+        <label name="color"/>
+        <field name="color"/>
+    </xpath>
+</data>

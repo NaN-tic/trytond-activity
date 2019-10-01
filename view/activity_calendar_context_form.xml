@@ -1,0 +1,4 @@
+<form>
+    <label name="activity_color_type"/>
+    <field name="activity_color_type"/>
+</form>

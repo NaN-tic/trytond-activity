@@ -2,14 +2,13 @@
 <!--The COPYRIGHT file at the top level of this repository
 contains the full copyright notices and license terms. -->
 <tree>
-    <field name="rec_name"/>
+    <field name="rec_name" expand="3"/>
     <field name="activity_type"/>
-    <field name="dtstart" widget="date"/>
-    <field name="dtstart" widget="time" string="Start Time"/>
-    <field name="dtend" widget="date"/>
-    <field name="dtend" widget="time" string="End Time"/>
+    <field name="date"/>
+    <field name="time"/>
+    <field name="duration"/>
     <field name="employee"/>
-    <field name="party"/>
-    <field name="resource"/>
+    <field name="party" expand="1"/>
+    <field name="resource" expand="2"/>
     <field name="state"/>
 </tree>

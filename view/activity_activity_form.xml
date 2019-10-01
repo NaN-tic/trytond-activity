@@ -10,6 +10,14 @@ contains the full copyright notices and license terms. -->
     <field name="activity_type" widget="selection"/>
     <label name="employee"/>
     <field name="employee"/>
+    <label name="date"/>
+    <field name="date"/>
+    <label name="time"/>
+    <field name="time"/>
+    <label name="duration"/>
+    <field name="duration"/>
+    <label name="day_busy_hours"/>
+    <field name="day_busy_hours"/>
     <label name="dtstart"/>
     <field name="dtstart"/>
     <label name="dtend"/>

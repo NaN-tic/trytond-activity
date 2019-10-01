@@ -50,7 +50,6 @@ contains the full copyright notices and license terms. -->
             <field name="act_window" ref="act_activity_activity"/>
         </record>
 
-        <!-- ir.action.act_window.domain -->
         <record model="ir.action.act_window.domain" id="act_activity_domain_pending">
           <field name="name">Planned Today</field>
           <field name="sequence" eval="10"/>
@@ -89,6 +88,13 @@ contains the full copyright notices and license terms. -->
             <field name="perm_write" eval="True"/>
             <field name="perm_create" eval="True"/>
             <field name="perm_delete" eval="True"/>
+        </record>
+
+        <!-- activity.calendar.context -->
+        <record model="ir.ui.view" id="activity_calendar_context_form_view">
+            <field name="model">activity.calendar.context</field>
+            <field name="type">form</field>
+            <field name="name">activity_calendar_context_form</field>
         </record>
 
         <!-- activity.reference -->
@@ -229,6 +235,7 @@ contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_activity_calendar">
             <field name="name">Activities</field>
             <field name="res_model">activity.activity</field>
+            <field name="context_model">activity.calendar.context</field>
         </record>
         <record model="ir.action.act_window.view" id="act_activity_calendar_calendar">
             <field name="sequence" eval="10"/>

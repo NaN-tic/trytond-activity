@@ -98,8 +98,11 @@ class Activity(ModelSQL, ModelView):
     @classmethod
     def __setup__(cls):
         super(Activity, cls).__setup__()
-        cls._order.insert(0, ('dtstart', 'DESC'))
-        cls._order.insert(1, ('subject', 'DESC'))
+        cls._order = [
+            ('dtstart', 'DESC'),
+            ('subject', 'ASC'),
+            ('id', 'DESC'),
+            ]
 
     @classmethod
     def __register__(cls, module_name):

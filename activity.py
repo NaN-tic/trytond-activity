@@ -293,13 +293,18 @@ class Activity(ModelSQL, ModelView):
     def update_dates(cls, values, record=None):
         values = values.copy()
         if not 'date' in values:
-            if 'dtstart' in values and 'dtend' in values:
+            dtstart = None
+            if 'dtstart' in values:
                 dtstart = values['dtstart']
+            elif record:
+                dtstart = record.dtstart
+            if 'dtend' in values:
                 dtend = values['dtend']
                 values['date'] = dtstart.date()
                 values['time'] = dtstart.time()
                 values['duration'] = dtend - dtstart
                 return values
+
         if record:
             for field in ('date', 'time', 'duration'):
                 if not field in values:

@@ -77,7 +77,7 @@ class Activity(ModelSQL, ModelView):
     date = fields.Date('Date', required=True, select=True)
     duration = fields.TimeDelta('Duration')
     time = fields.Time('Time')
-    dtstart = fields.DateTime('Start Date', required=True, select=True)
+    dtstart = fields.DateTime('Start Date', select=True)
     dtend = fields.DateTime('End Date', select=True)
     state = fields.Selection([
             ('planned', 'Planned'),

@@ -10,26 +10,32 @@ contains the full copyright notices and license terms. -->
     <field name="activity_type" widget="selection"/>
     <label name="employee"/>
     <field name="employee"/>
-    <label name="date"/>
-    <field name="date"/>
-    <label name="time"/>
-    <field name="time"/>
-    <label name="duration"/>
-    <field name="duration"/>
-    <label name="day_busy_hours"/>
-    <field name="day_busy_hours"/>
-    <label name="dtstart"/>
-    <field name="dtstart"/>
+    <group col="2" xexpand="0" xfill="0">
+        <label name="date" string="Date"/>
+        <label name="time" string="&amp; Time:" xexpand="0" xfill="0"/>
+    </group>
+    <group id="id" col="4">
+        <group id="dd" col="2">
+        <field name="date"/>
+        <field name="time" xexpand="1" xfill="1" xalign="1"/>
+        </group>
+        <label name="duration"/>
+        <field name="duration"/>
+    </group>
     <label name="dtend"/>
-    <field name="dtend"/>
-    <label name="resource"/>
-    <field name="resource"/>
+    <group id="duration" col="3">
+        <field name="dtend" readonly="1"/>
+        <label name="day_busy_hours"/>
+        <field name="day_busy_hours"/>
+    </group>
     <label name="party"/>
     <field name="party"/>
+    <label name="resource"/>
+    <field name="resource"/>
     <label name="location"/>
     <field name="location" colspan="3"/>
     <notebook>
-        <page string="Description" id="description">
+        <page name="description">
             <field name="description" colspan="4"/>
         </page>
     </notebook>

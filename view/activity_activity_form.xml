@@ -10,14 +10,14 @@ contains the full copyright notices and license terms. -->
     <field name="activity_type" widget="selection"/>
     <label name="employee"/>
     <field name="employee"/>
-    <group col="2" xexpand="0" xfill="0">
+    <group id="date_time_label" col="2" xexpand="0" xfill="0">
         <label name="date" string="Date"/>
         <label name="time" string="&amp; Time:" xexpand="0" xfill="0"/>
     </group>
-    <group id="id" col="4">
-        <group id="dd" col="2">
-        <field name="date"/>
-        <field name="time" xexpand="1" xfill="1" xalign="1"/>
+    <group id="date_time_duration" col="4">
+        <group id="date_time" col="2">
+            <field name="date"/>
+            <field name="time" xexpand="1" xfill="1" xalign="1"/>
         </group>
         <label name="duration"/>
         <field name="duration"/>

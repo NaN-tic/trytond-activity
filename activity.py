@@ -148,7 +148,7 @@ class Activity(ModelSQL, ModelView):
                     values=[sql_table.dtend - sql_table.dtstart],
                     where=sql_table.dtend != Null))
 
-    @fields.depends('resource', 'party')
+    @fields.depends('resource', '_parent_party.id', 'party')
     def on_change_with_party(self, name=None):
         if (self.resource
                 and not isinstance(self.resource, str)

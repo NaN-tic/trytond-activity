@@ -4,6 +4,7 @@ Party Replace Scenario
 
 Imports::
 
+    >>> import datetime
     >>> from proteus import Model, Wizard
     >>> from trytond.tests.tools import activate_modules
     >>> from trytond.modules.company.tests.tools import create_company, \
@@ -61,6 +62,7 @@ Create activities::
     >>> activity.party = party
     >>> activity.employee = employee
     >>> activity.activity_type = activity_type
+    >>> activity.dtstart = datetime.datetime.now()
     >>> activity.save()
 
 Try replace active party::

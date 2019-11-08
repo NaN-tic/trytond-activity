@@ -325,8 +325,12 @@ class Activity(ModelSQL, ModelView):
     def get_summary(self, name):
         if self.subject:
             text = self.subject
+        elif self.party:
+            text = self.party.rec_name
         elif self.code:
             text = self.code
+        else:
+            text = ''
         text += ' (%s)' % self.activity_type.rec_name
         if self.duration:
             text += '\n%s' % timedelta_to_string(self.duration)

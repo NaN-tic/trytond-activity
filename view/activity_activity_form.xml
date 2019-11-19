@@ -36,9 +36,14 @@ contains the full copyright notices and license terms. -->
     <field name="location" colspan="3"/>
     <notebook>
         <page name="description">
-            <field name="description" colspan="4"/>
+            <field name="description" colspan="4" height="400"/>
         </page>
     </notebook>
     <label name="state"/>
     <field name="state"/>
+    <group id="buttons" col="-1" colspan="2">
+        <button name="plan"/>
+        <button name="do"/>
+        <button name="cancel"/>
+    </group>
 </form>

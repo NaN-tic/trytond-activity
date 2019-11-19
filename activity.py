@@ -5,12 +5,14 @@ import pytz
 from sql import Null, Cast
 from sql.aggregate import Sum
 
-from trytond.model import ModelSQL, ModelView, fields, sequence_ordered
+from trytond.model import (Workflow, ModelSQL, ModelView, fields,
+    sequence_ordered)
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond import backend
 from trytond.i18n import gettext
 from trytond.exceptions import UserError
+from trytond.pyson import Eval
 
 __all__ = ['ActivityType', 'ActivityReference', 'Activity',
     'ActivityCalendarContext']
@@ -67,7 +69,7 @@ class ActivityReference(ModelSQL, ModelView):
     model = fields.Many2One('ir.model', 'Model', required=True)
 
 
-class Activity(ModelSQL, ModelView):
+class Activity(Workflow, ModelSQL, ModelView):
     'Activity'
     __name__ = "activity.activity"
     code = fields.Char('Code', readonly=True, select=True)
@@ -81,9 +83,9 @@ class Activity(ModelSQL, ModelView):
     dtend = fields.DateTime('End Date', select=True)
     state = fields.Selection([
             ('planned', 'Planned'),
-            ('held', 'Held'),
-            ('not_held', 'Not Held'),
-            ], 'State', required=True)
+            ('done', 'Held'),
+            ('canceled', 'Not Held'),
+            ], 'State', required=True, readonly=True)
     description = fields.Text('Description')
     employee = fields.Many2One('company.employee', 'Employee', required=True)
     location = fields.Char('Location')
@@ -103,6 +105,31 @@ class Activity(ModelSQL, ModelView):
             ('subject', 'ASC'),
             ('id', 'DESC'),
             ]
+        cls._transitions |= set((
+                ('planned', 'done'),
+                ('planned', 'canceled'),
+                ('done', 'planned'),
+                ('done', 'canceled'),
+                ('canceled', 'planned'),
+                ('canceled', 'done'),
+                ))
+        cls._buttons.update({
+                'plan': {
+                    'invisible': Eval('state') == 'planned',
+                    'icon': 'activity',
+                    'depends': ['state'],
+                    },
+                'cancel': {
+                    'invisible': Eval('state') == 'canceled',
+                    'icon': 'tryton-cancel',
+                    'depends': ['state'],
+                    },
+                'do': {
+                    'invisible': Eval('state') == 'done',
+                    'icon': 'tryton-ok',
+                    'depends': ['state'],
+                    },
+                })
 
     @classmethod
     def __register__(cls, module_name):
@@ -147,6 +174,32 @@ class Activity(ModelSQL, ModelView):
                     columns=[sql_table.duration],
                     values=[sql_table.dtend - sql_table.dtstart],
                     where=sql_table.dtend != Null))
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.state],
+                values=['done'],
+                where=sql_table.state == 'held'))
+        cursor.execute(*sql_table.update(
+                columns=[sql_table.state],
+                values=['canceled'],
+                where=sql_table.state == 'not_held'))
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('planned')
+    def plan(cls, activities):
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('done')
+    def do(cls, activities):
+        pass
+
+    @classmethod
+    @ModelView.button
+    @Workflow.transition('canceled')
+    def cancel(cls, activities):
+        pass
 
     @fields.depends('resource', '_parent_party.id', 'party')
     def on_change_with_party(self, name=None):

@@ -97,6 +97,34 @@ contains the full copyright notices and license terms. -->
             <field name="name">activity_calendar_context_form</field>
         </record>
 
+        <record model="ir.model.button" id="activity_do_button">
+            <field name="name">do</field>
+            <field name="string">Do</field>
+            <field name="model" search="[('model', '=', 'activity.activity')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="activity_do_button_group_activity">
+            <field name="button" ref="activity_do_button"/>
+            <field name="group" ref="group_activity"/>
+        </record>
+        <record model="ir.model.button" id="activity_cancel_button">
+            <field name="name">cancel</field>
+            <field name="string">Cancel</field>
+            <field name="model" search="[('model', '=', 'activity.activity')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="activity_cancel_button_group_activity">
+            <field name="button" ref="activity_cancel_button"/>
+            <field name="group" ref="group_activity"/>
+        </record>
+        <record model="ir.model.button" id="activity_plan_button">
+            <field name="name">plan</field>
+            <field name="string">Plan</field>
+            <field name="model" search="[('model', '=', 'activity.activity')]"/>
+        </record>
+        <record model="ir.model.button-res.group" id="activity_plan_button_group_activity">
+            <field name="button" ref="activity_plan_button"/>
+            <field name="group" ref="group_activity"/>
+        </record>
+
         <!-- activity.reference -->
         <record model="ir.ui.view" id="activity_reference_form_view">
             <field name="model">activity.reference</field>

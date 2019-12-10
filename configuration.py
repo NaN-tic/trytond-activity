@@ -51,7 +51,7 @@ class ConfigurationSequence(ModelSQL, CompanyValueMixin):
 
     @classmethod
     def __register__(cls, module_name):
-        TableHandler = backend.get('TableHandler')
+        TableHandler = backend.TableHandler
         old_table = 'activity_configuration_company'
         if (not TableHandler.table_exist(cls._table)
                 and TableHandler.table_exist(old_table)):

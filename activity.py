@@ -2,6 +2,7 @@
 # copyright notices and license terms.
 import datetime
 import pytz
+import time
 from sql import Null, Cast
 from sql.aggregate import Sum
 
@@ -14,8 +15,6 @@ from trytond.i18n import gettext
 from trytond.exceptions import UserWarning, UserError
 from trytond.pyson import Eval
 
-__all__ = ['ActivityType', 'ActivityReference', 'Activity',
-    'ActivityCalendarContext']
 
 # Use Tryton's default color by default
 _COLOR = '#ABD6E3'
@@ -395,6 +394,7 @@ class Activity(Workflow, ModelSQL, ModelView):
                 values['time'] = dtstart.time()
             elif record:
                 dtstart = record.dtstart
+
             if 'dtend' in values:
                 dtend = values['dtend']
                 if dtend and dtstart:
@@ -410,8 +410,10 @@ class Activity(Workflow, ModelSQL, ModelView):
 
         date = values.get('date')
         time = values.get('time')
-        if not date or not time:
+        if not date:
             return values
+        if not time:
+            time = datetime.datetime.now().time()
         duration = values.get('duration')
         dtstart = datetime.datetime.combine(date, time or datetime.time())
         dtstart = cls.local_to_utc(dtstart)

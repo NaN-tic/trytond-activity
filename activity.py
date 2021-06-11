@@ -2,7 +2,6 @@
 # copyright notices and license terms.
 import datetime
 import pytz
-import time
 from sql import Null, Cast
 from sql.aggregate import Sum
 

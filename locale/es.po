@@ -110,13 +110,13 @@ msgctxt "field:activity.type,color:"
 msgid "Color"
 msgstr "Color"
 
+msgctxt "field:activity.type,default_description:"
+msgid "Default description"
+msgstr "Descripción por defecto"
+
 msgctxt "field:activity.type,default_duration:"
 msgid "Default Duration"
 msgstr "Duración por defecto"
-
-msgctxt "field:activity.type,description:"
-msgid "Description"
-msgstr "Descripción"
 
 msgctxt "field:activity.type,name:"
 msgid "Name"
@@ -141,10 +141,6 @@ msgstr ""
 msgctxt "help:activity.type,color:"
 msgid "HTML color (hexadecimal)"
 msgstr "Color HTML (hexadecimal)"
-
-msgctxt "help:activity.type,description:"
-msgid "Default description"
-msgstr "Descripción por defecto"
 
 msgctxt "model:activity.activity,name:"
 msgid "Activity"

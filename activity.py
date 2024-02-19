@@ -2,6 +2,9 @@
 # copyright notices and license terms.
 import datetime
 import pytz
+import re
+import html
+import humanize
 from sql import Null, Cast
 from sql.aggregate import Sum
 
@@ -13,11 +16,16 @@ from trytond import backend
 from trytond.i18n import gettext
 from trytond.exceptions import UserError, UserWarning
 from trytond.pyson import Eval
+from trytond.modules.widgets import tools
+from trytond.url import URLAccessor
 
 
 # Use Tryton's default color by default
 _COLOR = '#ABD6E3'
 _RGB = (67, 84, 90)
+
+def create_anchors(text):
+    return re.sub(r"((http|https):\/\/\S*)", r'<a href="\1" target="_blank" rel="noopener">\1</a>', text)
 
 class RGB:
     def __init__(self, color=(0, 0, 0)):
@@ -96,6 +104,7 @@ class Activity(Workflow, ModelSQL, ModelView):
             },
         depends=['company'])
     summary = fields.Function(fields.Char('Summary'), 'get_summary')
+    html = fields.Function(fields.Binary('HTML'), 'get_html')
     calendar_color = fields.Function(fields.Char('Color'), 'get_calendar_color')
     calendar_background_color = fields.Function(fields.Char('Background Color'),
             'get_calendar_background_color')
@@ -194,6 +203,24 @@ class Activity(Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.update(
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'canceled'))
+
+        # Migration for activity descriptions to editorJS
+        
+        cursor.execute(*sql_table.select(sql_table.id, sql_table.description, where=((sql_table.description != None))))
+        
+        records = cursor.fetchall()
+        print('Updating ' + str(len(records)) + ' activity descriptions to JSON blocks')
+        counter = 0
+        for id, description in records:
+            counter += 1
+            if counter % 1000 == 0:
+                Transaction().connection.commit()
+            if '"blocks"' not in description:
+                cursor.execute(*sql_table.update(
+                    columns=[sql_table.description],
+                    values=[tools.text_to_js(description)],
+                    where=sql_table.id == id    
+                ))
 
     @classmethod
     @ModelView.button
@@ -388,7 +415,10 @@ class Activity(Workflow, ModelSQL, ModelView):
                 args.append([activity])
                 args.append(cls.update_dates(values, activity))
         super().write(*args)
-
+    
+    def get_html(self, name):
+        return tools.js_to_html(self.description)    
+    
     @classmethod
     def update_dates(cls, values, record=None):
         values = values.copy()

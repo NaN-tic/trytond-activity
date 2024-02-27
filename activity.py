@@ -205,9 +205,9 @@ class Activity(Workflow, ModelSQL, ModelView):
                 where=sql_table.state == 'canceled'))
 
         # Migration for activity descriptions to editorJS
-        
+
         cursor.execute(*sql_table.select(sql_table.id, sql_table.description, where=((sql_table.description != None))))
-        
+
         records = cursor.fetchall()
         print('Updating ' + str(len(records)) + ' activity descriptions to JSON blocks')
         counter = 0
@@ -219,7 +219,7 @@ class Activity(Workflow, ModelSQL, ModelView):
                 cursor.execute(*sql_table.update(
                     columns=[sql_table.description],
                     values=[tools.text_to_js(description)],
-                    where=sql_table.id == id    
+                    where=sql_table.id == id
                 ))
 
     @classmethod
@@ -415,10 +415,10 @@ class Activity(Workflow, ModelSQL, ModelView):
                 args.append([activity])
                 args.append(cls.update_dates(values, activity))
         super().write(*args)
-    
+
     def get_html(self, name):
-        return tools.js_to_html(self.description)    
-    
+        return tools.js_to_html(self.description)
+
     @classmethod
     def update_dates(cls, values, record=None):
         values = values.copy()

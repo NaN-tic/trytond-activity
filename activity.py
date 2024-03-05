@@ -209,7 +209,6 @@ class Activity(Workflow, ModelSQL, ModelView):
         cursor.execute(*sql_table.select(sql_table.id, sql_table.description, where=((sql_table.description != None))))
 
         records = cursor.fetchall()
-        print('Updating ' + str(len(records)) + ' activity descriptions to JSON blocks')
         counter = 0
         for id, description in records:
             counter += 1

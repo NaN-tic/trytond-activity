@@ -75,15 +75,16 @@ class ActivityType(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         super().__register__(module_name)
 
         # Migration for activity descriptions to editorJS
-        cursor.execute(*sql_table.select(sql_table.id, sql_table.description,
-                where=((sql_table.description != None))))
+        cursor.execute(*sql_table.select(sql_table.id,
+                sql_table.default_description,
+                where=((sql_table.default_description != None))))
 
         records = cursor.fetchall()
-        for id, description in records:
-            if '"blocks"' not in description:
+        for id, default_description in records:
+            if '"blocks"' not in default_description:
                 cursor.execute(*sql_table.update(
-                    columns=[sql_table.description],
-                    values=[tools.text_to_js(description)],
+                    columns=[sql_table.default_description],
+                    values=[tools.text_to_js(default_description)],
                     where=sql_table.id == id
                 ))
 

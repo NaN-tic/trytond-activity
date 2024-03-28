@@ -3,8 +3,6 @@
 import datetime
 import pytz
 import re
-import html
-import humanize
 from sql import Null, Cast
 from sql.aggregate import Sum
 
@@ -17,7 +15,6 @@ from trytond.i18n import gettext
 from trytond.exceptions import UserError, UserWarning
 from trytond.pyson import Eval
 from trytond.modules.widgets import tools
-from trytond.url import URLAccessor
 
 
 # Use Tryton's default color by default
@@ -69,6 +66,26 @@ class ActivityType(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     color = fields.Char('Color', help='HTML color (hexadecimal)')
     default_duration = fields.TimeDelta('Default Duration')
     default_description = fields.Text("Default Description")
+
+    @classmethod
+    def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
+        sql_table = cls.__table__()
+
+        super().__register__(module_name)
+
+        # Migration for activity descriptions to editorJS
+        cursor.execute(*sql_table.select(sql_table.id, sql_table.description,
+                where=((sql_table.description != None))))
+
+        records = cursor.fetchall()
+        for id, description in records:
+            if '"blocks"' not in description:
+                cursor.execute(*sql_table.update(
+                    columns=[sql_table.description],
+                    values=[tools.text_to_js(description)],
+                    where=sql_table.id == id
+                ))
 
 
 class ActivityReference(ModelSQL, ModelView):
@@ -205,8 +222,8 @@ class Activity(Workflow, ModelSQL, ModelView):
                 where=sql_table.state == 'canceled'))
 
         # Migration for activity descriptions to editorJS
-
-        cursor.execute(*sql_table.select(sql_table.id, sql_table.description, where=((sql_table.description != None))))
+        cursor.execute(*sql_table.select(sql_table.id, sql_table.description,
+                where=((sql_table.description != None))))
 
         records = cursor.fetchall()
         counter = 0

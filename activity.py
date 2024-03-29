@@ -74,19 +74,8 @@ class ActivityType(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
 
         super().__register__(module_name)
 
-        # Migration for activity descriptions to editorJS
-        cursor.execute(*sql_table.select(sql_table.id,
-                sql_table.default_description,
-                where=((sql_table.default_description != None))))
-
-        records = cursor.fetchall()
-        for id, default_description in records:
-            if '"blocks"' not in default_description:
-                cursor.execute(*sql_table.update(
-                    columns=[sql_table.default_description],
-                    values=[tools.text_to_js(default_description)],
-                    where=sql_table.id == id
-                ))
+        # Migration for activity descriptions to EditorJS
+        tools.migrate_field(sql_table, sql_table.default_description, 'text')
 
 
 class ActivityReference(ModelSQL, ModelView):
@@ -182,22 +171,6 @@ class Activity(Workflow, ModelSQL, ModelView):
 
         super(Activity, cls).__register__(module_name)
 
-        # Migration from 3.2: Remove type and direction fields
-        table.not_null_action('type', action='remove')
-        table.not_null_action('direction', action='remove')
-
-        # Migration from 3.2: Add code field
-        if (not code_exists and table.column_exist('type') and
-                table.column_exist('direction')):
-            cursor.execute(*sql_table.update(
-                    columns=[sql_table.code],
-                    values=[sql_table.id],
-                    where=sql_table.code == Null))
-            table.not_null_action('code', action='add')
-
-        # Migration from 3.4.1: subject is no more required
-        table.not_null_action('subject', 'remove')
-
         # Migration from 5.2
         if not date_exists:
             cursor.execute(*sql_table.update(
@@ -222,22 +195,8 @@ class Activity(Workflow, ModelSQL, ModelView):
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'canceled'))
 
-        # Migration for activity descriptions to editorJS
-        cursor.execute(*sql_table.select(sql_table.id, sql_table.description,
-                where=((sql_table.description != None))))
-
-        records = cursor.fetchall()
-        counter = 0
-        for id, description in records:
-            counter += 1
-            if counter % 1000 == 0:
-                Transaction().connection.commit()
-            if '"blocks"' not in description:
-                cursor.execute(*sql_table.update(
-                    columns=[sql_table.description],
-                    values=[tools.text_to_js(description)],
-                    where=sql_table.id == id
-                ))
+        # Migration for activity descriptions to EditorJS
+        tools.migrate_field(sql_table, sql_table.description, 'text')
 
     @classmethod
     @ModelView.button

@@ -109,8 +109,8 @@ class Activity(Workflow, ModelSQL, ModelView):
             'company': Eval('company', -1),
             },
         depends=['company'])
-    summary = fields.Function(fields.Char('Summary'), 'get_summary')
-    html = fields.Function(fields.Binary('HTML'), 'get_html')
+    summary = fields.Function(fields.Text('Summary'), 'get_summary')
+    html = fields.Function(fields.Text('HTML'), 'get_html')
     calendar_color = fields.Function(fields.Char('Color'), 'get_calendar_color')
     calendar_background_color = fields.Function(fields.Char('Background Color'),
             'get_calendar_background_color')

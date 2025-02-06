@@ -369,8 +369,8 @@ class Activity(Workflow, ModelSQL, ModelView):
     def get_origin(cls):
         pool = Pool()
         Model = pool.get('ir.model')
-        models = Model.search([('model', 'in', cls._get_origin())])
-        return [(None, '')] + [(x.model, x.name) for x in models]
+        models = Model.search([('name', 'in', cls._get_origin())])
+        return [(None, '')] + [(x.name, x.string) for x in models]
 
     @classmethod
     def create(cls, vlist):

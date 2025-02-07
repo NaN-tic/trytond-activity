@@ -358,7 +358,7 @@ class Activity(Workflow, ModelSQL, ModelView):
 
         res = [(None, '')]
         for _type in Reference.search([]):
-            res.append((_type.model.model, _type.model.name))
+            res.append((_type.model.name, _type.model.string))
         return res
 
     @classmethod

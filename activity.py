@@ -102,6 +102,7 @@ class Activity(Workflow, ModelSQL, ModelView):
             ('cancelled', 'Not Held'),
             ], 'State', required=True)
     description = fields.Text('Description')
+    description_block = fields.Text('Description Block')
     employee = fields.Many2One('company.employee', 'Employee', required=True)
     location = fields.Char('Location')
     party = fields.Many2One('party.party', "Party",
@@ -166,6 +167,8 @@ class Activity(Workflow, ModelSQL, ModelView):
         if backend.TableHandler.table_exist(cls._table):
             date_exists = table.column_exist('date')
 
+        description_block = table.column_exist('description_block')
+
         super(Activity, cls).__register__(module_name)
 
         # Migration from 5.2
@@ -194,6 +197,13 @@ class Activity(Workflow, ModelSQL, ModelView):
 
         # Migration for activity descriptions to EditorJS
         tools.migrate_field(sql_table, sql_table.description, 'text')
+
+        # Migration Block widget to text
+        if not description_block:
+            cursor.execute(*sql_table.update(
+                    columns=[sql_table.description_block],
+                    values=[sql_table.description],
+                    ))
 
     @classmethod
     @ModelView.button

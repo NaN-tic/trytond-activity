@@ -73,7 +73,7 @@ class ActivityType(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
         sql_table = cls.__table__()
         table = cls.__table_handler__(module_name)
 
-        has_description = table.column_exist('default_duration')
+        has_description = table.column_exist('default_description')
         has_description_block = table.column_exist('default_description_block')
         if has_description and not has_description_block:
             table.column_rename('default_description', 'default_description_block')

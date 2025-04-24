@@ -69,12 +69,29 @@ class ActivityType(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
+        table = cls.__table_handler__(module_name)
+
+        has_description = table.column_exist('default_description')
+        has_description_block = table.column_exist('default_description_block')
+        if has_description and not has_description_block:
+            table.column_rename('default_description', 'default_description_block')
 
         super().__register__(module_name)
 
-        # Migration for activity descriptions to EditorJS
-        tools.migrate_field(sql_table, sql_table.default_description, 'text')
+        # Migration Block widget to text
+        if has_description and not has_description_block:
+            query = sql_table.select(sql_table.id, sql_table.default_description_block,
+                where=sql_table.default_description_block != Null)
+            cursor.execute(*query)
+            for x in cursor.fetchall():
+                query = sql_table.update(
+                        columns=[sql_table.default_description],
+                        values=[tools.js_to_text(x[1])],
+                        where=sql_table.id == x[0]
+                        )
+                cursor.execute(*query)
 
 
 class ActivityReference(ModelSQL, ModelView):
@@ -166,6 +183,11 @@ class Activity(Workflow, ModelSQL, ModelView):
         if backend.TableHandler.table_exist(cls._table):
             date_exists = table.column_exist('date')
 
+        has_description = table.column_exist('description')
+        has_description_block = table.column_exist('description_block')
+        if has_description and not has_description_block:
+            table.column_rename('description', 'description_block')
+
         super(Activity, cls).__register__(module_name)
 
         # Migration from 5.2
@@ -192,8 +214,18 @@ class Activity(Workflow, ModelSQL, ModelView):
                 [sql_table.state], ['cancelled'],
                 where=sql_table.state == 'canceled'))
 
-        # Migration for activity descriptions to EditorJS
-        tools.migrate_field(sql_table, sql_table.description, 'text')
+        # Migration Block widget to text
+        if has_description and not has_description_block:
+            query = sql_table.select(sql_table.id, sql_table.description_block,
+                where=sql_table.description_block != Null)
+            cursor.execute(*query)
+            for x in cursor.fetchall():
+                query = sql_table.update(
+                        columns=[sql_table.description],
+                        values=[tools.js_to_text(x[1])],
+                        where=sql_table.id == x[0]
+                        )
+                cursor.execute(*query)
 
     @classmethod
     @ModelView.button

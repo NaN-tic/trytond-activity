@@ -3,6 +3,7 @@
 import datetime
 import pytz
 import re
+import markdown
 from sql import Null, Cast
 from sql.aggregate import Sum
 
@@ -427,7 +428,9 @@ class Activity(Workflow, ModelSQL, ModelView):
         super().write(*args)
 
     def get_html(self, name):
-        return tools.js_to_html(self.description)
+        html = markdown.markdown(self.description)
+        html = '<html><body>%s</body></html>' % html
+        return html
 
     @classmethod
     def update_dates(cls, values, record=None):

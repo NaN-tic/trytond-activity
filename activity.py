@@ -330,8 +330,6 @@ class Activity(Workflow, ModelSQL, ModelView):
         if not self.activity_type:
             return
         description = self.description
-        if description:
-            description = tools.js_to_text(self.description)
         if not description and self.activity_type.default_description:
             self.description = self.activity_type.default_description
         if not self.duration is None:

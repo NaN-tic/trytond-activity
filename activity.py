@@ -428,7 +428,7 @@ class Activity(Workflow, ModelSQL, ModelView):
         super().write(*args)
 
     def get_html(self, name):
-        html = markdown.markdown(self.description)
+        html = markdown.markdown(self.description) if self.description else ''
         html = '<html><body>%s</body></html>' % html
         return html
 

@@ -85,6 +85,7 @@ class Test(unittest.TestCase):
         self.assertEqual(len(Activity.find([('mine', '=', False)])), 1)
         self.assertEqual(len(Activity.find([('mine', '!=', True)])), 1)
         self.assertEqual(len(Activity.find([('mine', '!=', False)])), 2)
+
         # Try replace active party
         replace = Wizard('party.replace', models=[party])
         replace.form.source = party

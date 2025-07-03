@@ -18,6 +18,10 @@ msgctxt "field:activity.activity,code:"
 msgid "Code"
 msgstr "Código"
 
+msgctxt "field:activity.activity,company:"
+msgid "Company"
+msgstr "Empresa"
+
 msgctxt "field:activity.activity,date:"
 msgid "Date"
 msgstr "Fecha"
@@ -46,9 +50,17 @@ msgctxt "field:activity.activity,employee:"
 msgid "Employee"
 msgstr "Empleado"
 
+msgctxt "field:activity.activity,html:"
+msgid "HTML"
+msgstr "HTML"
+
 msgctxt "field:activity.activity,location:"
 msgid "Location"
 msgstr "Ubicación"
+
+msgctxt "field:activity.activity,mine:"
+msgid "Mine"
+msgstr "Las mías"
 
 msgctxt "field:activity.activity,origin:"
 msgid "Origin"
@@ -86,10 +98,6 @@ msgctxt "field:activity.configuration,activity_sequence:"
 msgid "Activity Sequence"
 msgstr "Secuencia actividad"
 
-msgctxt "field:activity.configuration,employee:"
-msgid "Employee"
-msgstr "Empleado"
-
 msgctxt "field:activity.configuration.sequence,activity_sequence:"
 msgid "Activity Sequence"
 msgstr "Secuencia actividad"
@@ -102,17 +110,13 @@ msgctxt "field:activity.reference,model:"
 msgid "Model"
 msgstr "Modelo"
 
-msgctxt "field:activity.type,active:"
-msgid "Active"
-msgstr "Activa"
-
 msgctxt "field:activity.type,color:"
 msgid "Color"
 msgstr "Color"
 
 msgctxt "field:activity.type,default_description:"
-msgid "Default description"
-msgstr "Descripción por defecto"
+msgid "Default Description"
+msgstr "Descripción predeterminada"
 
 msgctxt "field:activity.type,default_duration:"
 msgid "Default Duration"
@@ -129,6 +133,10 @@ msgstr "Color"
 msgctxt "field:party.party,activities:"
 msgid "Activities"
 msgstr "Actividades"
+
+msgctxt "help:activity.activity,mine:"
+msgid "Activities assigned to me."
+msgstr "Las actividades que tengo asignadas."
 
 msgctxt "help:activity.calendar.context,activity_color_type:"
 msgid ""
@@ -257,6 +265,10 @@ msgstr "Planificar"
 msgctxt "model:ir.model.button,string:activity_split_button"
 msgid "Split"
 msgstr "Dividir"
+
+msgctxt "model:ir.rule.group,name:rule_group_activity_companies"
+msgid "User in companies"
+msgstr "Usuario en empresas"
 
 msgctxt "model:ir.sequence,name:sequence_activity"
 msgid "Activity"

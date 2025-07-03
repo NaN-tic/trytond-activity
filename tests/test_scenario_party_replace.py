@@ -4,7 +4,7 @@ import unittest
 from proteus import Model, Wizard
 from trytond.modules.company.tests.tools import create_company, get_company
 from trytond.tests.test_tryton import drop_db
-from trytond.tests.tools import activate_modules
+from trytond.tests.tools import activate_modules, set_user
 
 
 class Test(unittest.TestCase):
@@ -20,7 +20,7 @@ class Test(unittest.TestCase):
     def test(self):
 
         # Install activity
-        activate_modules('activity')
+        config = activate_modules('activity')
 
         # Create company
         _ = create_company()
@@ -49,23 +49,42 @@ class Test(unittest.TestCase):
 
         # Create employee
         Employee = Model.get('company.employee')
-        employee = Employee()
         eparty = Party(name='Employee')
         eparty.save()
+        employee = Employee()
         employee.party = eparty
         employee.company = company
         employee.save()
+        employee1 = Employee()
+        employee1.party = eparty
+        employee1.company = company
+        employee1.save()
+
+        # Set user
+        User = Model.get('res.user')
+        user = User(config.user)
+        user.employees.append(Employee(employee.id))
+        user.employee = employee
+        user.save()
+        set_user(user)
 
         # Create activities
         Activity = Model.get('activity.activity')
         ActivityType = Model.get('activity.type')
         activity_type, = ActivityType.find([], limit=1)
-        activity = Activity()
-        activity.party = party
-        activity.employee = employee
-        activity.activity_type = activity_type
-        activity.dtstart = datetime.datetime.now()
-        activity.save()
+        for empl in (employee, employee, employee1):
+            activity = Activity()
+            activity.party = party
+            activity.employee = empl
+            activity.activity_type = activity_type
+            activity.dtstart = datetime.datetime.now()
+            activity.save()
+
+        self.assertEqual(len(Activity.find([])), 3)
+        self.assertEqual(len(Activity.find([('mine', '=', True)])), 2)
+        self.assertEqual(len(Activity.find([('mine', '=', False)])), 1)
+        self.assertEqual(len(Activity.find([('mine', '!=', True)])), 1)
+        self.assertEqual(len(Activity.find([('mine', '!=', False)])), 2)
 
         # Try replace active party
         replace = Wizard('party.replace', models=[party])

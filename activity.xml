@@ -35,9 +35,7 @@ contains the full copyright notices and license terms. -->
         <record model="ir.action.act_window" id="act_activity_activity">
             <field name="name">Activity</field>
             <field name="res_model">activity.activity</field>
-            <field name="search_value"
-                eval="[('employee', '=', Eval('context', {}).get('employee.rec_name', '%'))]"
-                pyson="1"/>
+            <field name="search_value" eval="[('mine', '=', True)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_activity_activity_view1">
             <field name="sequence" eval="10"/>

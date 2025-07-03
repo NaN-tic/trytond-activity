@@ -136,6 +136,9 @@ class Activity(Workflow, ModelSQL, ModelView):
         'get_day_busy_hours')
     company = fields.Function(fields.Many2One('company.company', "Company"),
         'on_change_with_company', searcher='search_company')
+    mine = fields.Function(fields.Boolean('Mine',
+        help='Activities assigned to me.'),
+        'on_change_with_mine', searcher='search_mine')
 
     @classmethod
     def __setup__(cls):
@@ -541,6 +544,23 @@ class Activity(Workflow, ModelSQL, ModelView):
             res[activity.id] = sums.get((activity.employee.id, activity.date),
                 datetime.timedelta())
         return res
+
+    @fields.depends('employee')
+    def on_change_with_mine(self, name=None):
+        employee_id = Transaction().context.get('employee', -1)
+        if (employee_id == (self.employee and self.employee.id)):
+            return True
+        return False
+
+    @classmethod
+    def search_mine(cls, name, clause):
+        employee_id = Transaction().context.get('employee', -1)
+
+        _, operator, value = clause
+        if value == False:
+            operator = '!=' if operator == '=' else '='
+
+        return [('employee', operator, employee_id)]
 
     @fields.depends('employee')
     def on_change_with_company(self, name=None):

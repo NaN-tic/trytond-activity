@@ -136,7 +136,8 @@ class Activity(Workflow, ModelSQL, ModelView):
         'get_day_busy_hours')
     company = fields.Function(fields.Many2One('company.company', "Company"),
         'on_change_with_company', searcher='search_company')
-    mine = fields.Function(fields.Boolean('Mine', help='Mine activities'),
+    mine = fields.Function(fields.Boolean('Mine',
+        help='Activities assigned to me.'),
         'on_change_with_mine', searcher='search_mine')
 
     @classmethod

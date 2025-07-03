@@ -135,8 +135,8 @@ msgid "Activities"
 msgstr "Activitats"
 
 msgctxt "help:activity.activity,mine:"
-msgid "Mine activities"
-msgstr "Les meves activitats"
+msgid "Activities assigned to me."
+msgstr "Les activitats que tinc assignades."
 
 msgctxt "help:activity.calendar.context,activity_color_type:"
 msgid ""

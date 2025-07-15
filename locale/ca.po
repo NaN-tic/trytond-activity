@@ -60,7 +60,7 @@ msgstr "Ubicació"
 
 msgctxt "field:activity.activity,mine:"
 msgid "Mine"
-msgstr "Les meves"
+msgstr "Meva"
 
 msgctxt "field:activity.activity,origin:"
 msgid "Origin"

@@ -60,7 +60,7 @@ msgstr "Ubicación"
 
 msgctxt "field:activity.activity,mine:"
 msgid "Mine"
-msgstr "Las mías"
+msgstr "Mía"
 
 msgctxt "field:activity.activity,origin:"
 msgid "Origin"

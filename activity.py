@@ -68,32 +68,6 @@ class ActivityType(sequence_ordered(), DeactivableMixin, ModelSQL, ModelView):
     default_duration = fields.TimeDelta('Default Duration')
     default_description = fields.Text("Default Description")
 
-    @classmethod
-    def __register__(cls, module_name):
-        cursor = Transaction().connection.cursor()
-        sql_table = cls.__table__()
-        table = cls.__table_handler__(module_name)
-
-        has_description = table.column_exist('default_description')
-        has_description_block = table.column_exist('default_description_block')
-        if has_description and not has_description_block:
-            table.column_rename('default_description', 'default_description_block')
-
-        super().__register__(module_name)
-
-        # Migration Block widget to text
-        if has_description and not has_description_block:
-            query = sql_table.select(sql_table.id, sql_table.default_description_block,
-                where=sql_table.default_description_block != Null)
-            cursor.execute(*query)
-            for x in cursor.fetchall():
-                query = sql_table.update(
-                        columns=[sql_table.default_description],
-                        values=[tools.js_to_text(x[1])],
-                        where=sql_table.id == x[0]
-                        )
-                cursor.execute(*query)
-
 
 class ActivityReference(ModelSQL, ModelView):
     'Activity Reference'

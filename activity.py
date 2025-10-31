@@ -229,6 +229,8 @@ class Activity(Workflow, ModelSQL, ModelView):
                 ])
         if not child_activities:
             for activity in activities:
+                if not activity.description:
+                    continue
                 aux = [x for x in activity.description.split('\n---\n')
                     if x.strip()]
                 key = 'activity_split.%d' % len(aux)

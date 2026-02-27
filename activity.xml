@@ -283,7 +283,7 @@ contains the full copyright notices and license terms. -->
             <field name="name">Activities</field>
             <field name="res_model">activity.activity</field>
             <field name="context_model">activity.calendar.context</field>
-            <field name="search_value" eval="[('employee', '=', Eval('context', {}).get('employee.rec_name', '%'))]" pyson="1"/>
+            <field name="search_value" eval="[('mine', '=', True)]" pyson="1"/>
         </record>
         <record model="ir.action.act_window.view" id="act_activity_calendar_calendar">
             <field name="sequence" eval="10"/>

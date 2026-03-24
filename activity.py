@@ -495,17 +495,21 @@ class Activity(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def get_day_busy_hours(cls, activities, name):
+        if not activities:
+            return {}
         cursor = Transaction().connection.cursor()
         table = cls.__table__()
 
-        employees = [x.employee.id for x in activities]
-        min_date = min([x.date for x in activities])
-        max_date = max([x.date for x in activities])
+        employees = {x.employee.id for x in activities if x.employee}
+        if not employees:
+            return {activity.id: datetime.timedelta() for activity in activities}
+        min_date = min(x.date for x in activities)
+        max_date = max(x.date for x in activities)
         query = table.select(
             table.employee,
             table.date,
             Sum(table.duration),
-            where=((table.employee.in_(employees))
+            where=((table.employee.in_(list(employees)))
                 & (table.date >= min_date)
                 & (table.date <= max_date)),
             group_by=(table.employee, table.date))

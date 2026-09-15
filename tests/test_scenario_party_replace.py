@@ -79,6 +79,7 @@ class Test(unittest.TestCase):
             activity.activity_type = activity_type
             activity.dtstart = datetime.datetime.now()
             activity.save()
+            self.assertEqual(activity.company, company)
 
         self.assertEqual(len(Activity.find([])), 3)
         self.assertEqual(len(Activity.find([('mine', '=', True)])), 2)

@@ -94,7 +94,11 @@ class Activity(Workflow, ModelSQL, ModelView):
             ('cancelled', 'Not Held'),
             ], 'State', required=True)
     description = fields.Text('Description')
-    employee = fields.Many2One('company.employee', 'Employee', required=True)
+    company = fields.Many2One('company.company', "Company", required=True)
+    employee = fields.Many2One('company.employee', 'Employee', required=True,
+        domain=[
+            ('company', '=', Eval('company', -1)),
+            ])
     location = fields.Char('Location')
     party = fields.Many2One('party.party', "Party",
         context={
@@ -108,8 +112,6 @@ class Activity(Workflow, ModelSQL, ModelView):
             'get_calendar_background_color')
     day_busy_hours = fields.Function(fields.TimeDelta('Day Busy Hours'),
         'get_day_busy_hours')
-    company = fields.Function(fields.Many2One('company.company', "Company"),
-        'on_change_with_company', searcher='search_company')
     mine = fields.Function(fields.Boolean('Mine',
         help='Activities assigned to me.'),
         'on_change_with_mine', searcher='search_mine')
@@ -153,10 +155,13 @@ class Activity(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def __register__(cls, module_name):
+        Employee = Pool().get('company.employee')
         cursor = Transaction().connection.cursor()
         sql_table = cls.__table__()
+        employee_table = Employee.__table__()
         table = cls.__table_handler__(module_name)
 
+        company_exists = table.column_exist('company')
         date_exists = True
         if backend.TableHandler.table_exist(cls._table):
             date_exists = table.column_exist('date')
@@ -167,6 +172,14 @@ class Activity(Workflow, ModelSQL, ModelView):
             table.column_rename('description', 'description_block')
 
         super(Activity, cls).__register__(module_name)
+
+        # Migration from 7.8: add company
+        if not company_exists:
+            cursor.execute(*sql_table.update(
+                    [sql_table.company],
+                    [employee_table.select(
+                            employee_table.company,
+                            where=employee_table.id == sql_table.employee)]))
 
         # Migration from 5.2
         if not date_exists:
@@ -272,6 +285,10 @@ class Activity(Workflow, ModelSQL, ModelView):
         User = Pool().get('res.user')
         user = User(Transaction().user)
         return user.employee and user.employee.id or None
+
+    @staticmethod
+    def default_company():
+        return Transaction().context.get('company')
 
     @staticmethod
     def default_state():
@@ -537,15 +554,6 @@ class Activity(Workflow, ModelSQL, ModelView):
             operator = '!=' if operator == '=' else '='
 
         return [('employee', operator, employee_id)]
-
-    @fields.depends('employee')
-    def on_change_with_company(self, name=None):
-        return self.employee.company.id if self.employee and self.employee.company else None
-
-    @classmethod
-    def search_company(cls, name, clause):
-        return [('employee.%s' % name,) + tuple(clause[1:])]
-
 
 class ActivityCalendarContext(ModelView):
     'Activity Calendar Context'

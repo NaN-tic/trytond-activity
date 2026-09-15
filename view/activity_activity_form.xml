@@ -8,6 +8,8 @@ contains the full copyright notices and license terms. -->
     <field name="code"/>
     <label name="activity_type"/>
     <field name="activity_type"/>
+    <label name="company"/>
+    <field name="company"/>
     <label name="employee"/>
     <field name="employee"/>
     <group id="date_time_label" col="2" xexpand="0" xfill="0">

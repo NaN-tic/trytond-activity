@@ -6,17 +6,9 @@ contains the full copyright notices and license terms. -->
         <record model="res.group" id="group_activity_admin">
             <field name="name">Activities Administration</field>
         </record>
-        <record model="res.user-res.group" id="user_admin_group_activity_admin">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_activity_admin"/>
-        </record>
 
         <record model="res.group" id="group_activity">
             <field name="name">Activities</field>
-        </record>
-        <record model="res.user-res.group" id="user_admin_group_activity">
-            <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_activity"/>
         </record>
 
         <!-- activity.activity -->

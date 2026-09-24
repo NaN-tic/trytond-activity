@@ -37,11 +37,6 @@ contains the full copyright notices and license terms. -->
             <field name="name">Activity</field>
         </record>
         <record model="ir.sequence.type-res.group"
-            id="sequence_type_activity_group_admin">
-            <field name="sequence_type" ref="sequence_type_activity"/>
-            <field name="group" ref="res.group_admin"/>
-        </record>
-        <record model="ir.sequence.type-res.group"
             id="sequence_type_activity_group_activity_admin">
             <field name="sequence_type" ref="sequence_type_activity"/>
             <field name="group" ref="group_activity_admin"/>

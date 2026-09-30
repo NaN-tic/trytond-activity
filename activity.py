@@ -347,25 +347,23 @@ class Activity(Workflow, ModelSQL, ModelView):
         timezone = cls.get_timezone()
         if not timezone:
             return value
-        converted = value
-        converted = timezone.localize(value)
-        converted = value + converted.utcoffset()
-        return converted
+        return pytz.utc.localize(value).astimezone(timezone).replace(tzinfo=None)
 
     @classmethod
     def local_to_utc(cls, value):
         timezone = cls.get_timezone()
         if not timezone:
             return value
-        converted = timezone.localize(value)
-        converted = value - converted.utcoffset()
-        return converted
+        return timezone.localize(value).astimezone(pytz.utc).replace(tzinfo=None)
 
-    @fields.depends('dtstart')
+    @fields.depends('dtstart', 'company')
     def on_change_dtstart(self):
         if not self.dtstart:
             return
-        dt = self.utc_to_local(self.dtstart)
+        company = self.company.id if self.company else Transaction().context.get(
+            'company')
+        with Transaction().set_context(company=company):
+            dt = self.utc_to_local(self.dtstart)
         self.date = dt.date()
         if dt.time() == datetime.time():
             # When time is 0:00 we consider it is a full-day activity
@@ -431,42 +429,44 @@ class Activity(Workflow, ModelSQL, ModelView):
     @classmethod
     def update_dates(cls, values, record=None):
         values = values.copy()
-        if not 'date' in values:
-            dtstart = None
-            if 'dtstart' in values:
-                dtstart = values['dtstart']
-                values['date'] = dtstart.date()
-                values['time'] = dtstart.time()
-            elif record:
-                dtstart = record.dtstart
-
-            if 'dtend' in values:
-                dtend = values['dtend']
-                if dtend and dtstart:
-                    values['duration'] = dtend - dtstart
-                else:
-                    values['duration'] = None
-                return values
-
-        if record:
-            for field in ('date', 'time', 'duration'):
-                if not field in values:
-                    values[field] = getattr(record, field)
-
-        date = values.get('date')
-        time = values.get('time')
-        if not date:
+        date_fields = {'date', 'time', 'dtstart', 'dtend', 'duration', 'company'}
+        if not date_fields & values.keys():
             return values
-        if not time:
-            time = datetime.datetime.now().time()
-        duration = values.get('duration')
-        dtstart = datetime.datetime.combine(date, time or datetime.time())
-        dtstart = cls.local_to_utc(dtstart)
-        dtend = None
-        if time and duration:
-            dtend = dtstart + duration
-        values['dtstart'] = dtstart
-        values['dtend'] = dtend
+
+        company = values.get('company', record.company.id if record else
+            Transaction().context.get('company'))
+        duration = values.get('duration', record.duration if record else None)
+        time = values.get('time', record.time if record else None)
+        with Transaction().set_context(company=company):
+            if 'dtstart' in values:
+                # A UTC instant must not be reinterpreted as local wall time.
+                dtstart = values['dtstart']
+                if dtstart is None:
+                    values.update(date=None, time=None, dtend=None)
+                    return values
+                local = cls.utc_to_local(dtstart)
+                values['date'] = local.date()
+                # Preserve an explicit all-day flag supplied by the client.
+                time = (None if 'time' in values and values['time'] is None
+                    else local.time())
+                values['time'] = time
+            elif {'date', 'time', 'company'} & values.keys():
+                date = values.get('date', record.date if record else None)
+                if not date:
+                    return values
+                local = datetime.datetime.combine(date, time or datetime.time())
+                dtstart = cls.local_to_utc(local)
+                values['dtstart'] = dtstart
+            else:
+                dtstart = record.dtstart if record else None
+
+        if 'dtend' in values:
+            dtend = values['dtend']
+            values['duration'] = (
+                dtend - dtstart if dtend and dtstart else None)
+        elif dtstart:
+            values['dtend'] = (dtstart + duration
+                if time is not None and duration is not None else None)
         return values
 
     def get_summary(self, name):

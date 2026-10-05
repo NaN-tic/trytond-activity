@@ -398,18 +398,20 @@ class Activity(Workflow, ModelSQL, ModelView):
         return [(None, '')] + [(x.name, x.string) for x in models]
 
     @classmethod
-    def create(cls, vlist):
+    def preprocess_values(cls, mode, values):
+        values = super().preprocess_values(mode, values)
+        if mode != 'create':
+            return values
+
         pool = Pool()
         Config = pool.get('activity.configuration')
 
         sequence = Config(1).activity_sequence
         if not sequence:
             raise UserError(gettext('activity.no_activity_sequence'))
-        vlist = [x.copy() for x in vlist]
-        for vals in vlist:
-            vals['code'] = sequence.get()
-            vals.update(cls.update_dates(vals))
-        return super(Activity, cls).create(vlist)
+        values['code'] = sequence.get()
+        values.update(cls.update_dates(values))
+        return values
 
     @classmethod
     def write(cls, *args):

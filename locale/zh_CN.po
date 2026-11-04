@@ -1,0 +1,348 @@
+#
+msgid ""
+msgstr ""
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:activity.activity,activity_type:"
+msgid "Type"
+msgstr "科目"
+
+msgctxt "field:activity.activity,calendar_background_color:"
+msgid "Background Color"
+msgstr "背景颜色"
+
+msgctxt "field:activity.activity,calendar_color:"
+msgid "Color"
+msgstr "颜色"
+
+msgctxt "field:activity.activity,code:"
+msgid "Code"
+msgstr "代码"
+
+msgctxt "field:activity.activity,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:activity.activity,date:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "field:activity.activity,day_busy_hours:"
+msgid "Day Busy Hours"
+msgstr "每日忙碌时段"
+
+msgctxt "field:activity.activity,description:"
+msgid "Description"
+msgstr "描述"
+
+msgctxt "field:activity.activity,dtend:"
+msgid "End Date"
+msgstr "结账日期"
+
+msgctxt "field:activity.activity,dtstart:"
+msgid "Start Date"
+msgstr "启用日期"
+
+msgctxt "field:activity.activity,duration:"
+msgid "Duration"
+msgstr "持续时间"
+
+msgctxt "field:activity.activity,employee:"
+msgid "Employee"
+msgstr "雇员"
+
+msgctxt "field:activity.activity,html:"
+msgid "HTML"
+msgstr "HTML"
+
+msgctxt "field:activity.activity,location:"
+msgid "Location"
+msgstr "库位"
+
+msgctxt "field:activity.activity,mine:"
+msgid "Mine"
+msgstr "我的"
+
+msgctxt "field:activity.activity,origin:"
+msgid "Origin"
+msgstr "依据"
+
+msgctxt "field:activity.activity,party:"
+msgid "Party"
+msgstr "参与者"
+
+msgctxt "field:activity.activity,resource:"
+msgid "Resource"
+msgstr "资源"
+
+msgctxt "field:activity.activity,state:"
+msgid "State"
+msgstr "状态"
+
+msgctxt "field:activity.activity,subject:"
+msgid "Subject"
+msgstr "主题"
+
+msgctxt "field:activity.activity,summary:"
+msgid "Summary"
+msgstr "摘要"
+
+msgctxt "field:activity.activity,time:"
+msgid "Time"
+msgstr "时间"
+
+msgctxt "field:activity.calendar.context,activity_color_type:"
+msgid "Use Type Color"
+msgstr "使用类型颜色"
+
+msgctxt "field:activity.configuration,activity_sequence:"
+msgid "Activity Sequence"
+msgstr "活动编号序列"
+
+msgctxt "field:activity.configuration.sequence,activity_sequence:"
+msgid "Activity Sequence"
+msgstr "活动编号序列"
+
+msgctxt "field:activity.configuration.sequence,company:"
+msgid "Company"
+msgstr "公司"
+
+msgctxt "field:activity.reference,model:"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "field:activity.type,color:"
+msgid "Color"
+msgstr "颜色"
+
+msgctxt "field:activity.type,default_description:"
+msgid "Default Description"
+msgstr "默认描述"
+
+msgctxt "field:activity.type,default_duration:"
+msgid "Default Duration"
+msgstr "默认时长"
+
+msgctxt "field:activity.type,name:"
+msgid "Name"
+msgstr "名称"
+
+msgctxt "field:company.employee,color:"
+msgid "Color"
+msgstr "颜色"
+
+msgctxt "field:party.party,activities:"
+msgid "Activities"
+msgstr "活动"
+
+msgctxt "help:activity.activity,mine:"
+msgid "Activities assigned to me."
+msgstr "分配给我的活动。"
+
+msgctxt "help:activity.calendar.context,activity_color_type:"
+msgid ""
+"If checked, uses the color of the type of the activity as event background. "
+"Otherwise uses the color defined in the employee."
+msgstr "勾选后，使用活动类型的颜色作为事件背景；否则使用员工设置的颜色。"
+
+msgctxt "help:activity.type,color:"
+msgid "HTML color (hexadecimal)"
+msgstr "HTML 颜色（十六进制）"
+
+msgctxt "model:activity.activity,name:"
+msgid "Activity"
+msgstr "活动"
+
+msgctxt "model:activity.calendar.context,name:"
+msgid "Activity Calendar Context"
+msgstr "活动日历上下文"
+
+msgctxt "model:activity.configuration,name:"
+msgid "Activity Configuration"
+msgstr "活动配置"
+
+msgctxt "model:activity.configuration.sequence,name:"
+msgid "Activity Sequence Configuration"
+msgstr "活动编号序列配置"
+
+msgctxt "model:activity.reference,name:"
+msgid "Activity Reference"
+msgstr "活动参考"
+
+msgctxt "model:activity.type,name:"
+msgid "Activity Type"
+msgstr "活动类型"
+
+msgctxt "model:activity.type,name:incoming_call_type"
+msgid "Incoming Call"
+msgstr "来电"
+
+msgctxt "model:activity.type,name:incoming_email_type"
+msgid "Incoming Email"
+msgstr "收到的电子邮件"
+
+msgctxt "model:activity.type,name:meeting_type"
+msgid "Meeting"
+msgstr "会议"
+
+msgctxt "model:activity.type,name:outgoing_call_type"
+msgid "Outgoing Call"
+msgstr "去电"
+
+msgctxt "model:activity.type,name:outgoing_email_type"
+msgid "Outgoing Email"
+msgstr "发出的电子邮件"
+
+msgctxt "model:ir.action,name:act_activity_activity"
+msgid "Activity"
+msgstr "活动"
+
+msgctxt "model:ir.action,name:act_activity_calendar"
+msgid "Activities"
+msgstr "活动"
+
+msgctxt "model:ir.action,name:act_activity_configuration"
+msgid "Configuration"
+msgstr "设置"
+
+msgctxt "model:ir.action,name:act_activity_form"
+msgid "Activities"
+msgstr "活动"
+
+msgctxt "model:ir.action,name:act_activity_reference"
+msgid "Activity Reference"
+msgstr "活动参考"
+
+msgctxt "model:ir.action,name:act_activity_type"
+msgid "Activity Type"
+msgstr "活动类型"
+
+msgctxt "model:ir.action,name:act_split_relate"
+msgid "Sub Activities"
+msgstr "子活动"
+
+msgctxt "model:ir.action.act_window.domain,name:"
+msgid "Held"
+msgstr "已举行"
+
+msgctxt "model:ir.action.act_window.domain,name:act_activity_domain_all"
+msgid "All"
+msgstr "全部"
+
+msgctxt "model:ir.action.act_window.domain,name:act_activity_domain_pending"
+msgid "Planned Today"
+msgstr "今日计划"
+
+msgctxt "model:ir.action.act_window.domain,name:act_activity_domain_planned"
+msgid "Planned"
+msgstr "已计划"
+
+msgctxt "model:ir.message,text:create_subactivities"
+msgid "Are you sure you want to create \"%(count)s\" activities?"
+msgstr "确定要创建“%(count)s”个活动吗？"
+
+msgctxt "model:ir.message,text:no_activity_sequence"
+msgid ""
+"There is no activity sequence defined. Please define on in activity "
+"configuration."
+msgstr "尚未定义活动编号序列。请在活动配置中设置。"
+
+msgctxt "model:ir.model.button,string:activity_cancel_button"
+msgid "Cancel"
+msgstr "取消"
+
+msgctxt "model:ir.model.button,string:activity_do_button"
+msgid "Do"
+msgstr "完成"
+
+msgctxt "model:ir.model.button,string:activity_plan_button"
+msgid "Plan"
+msgstr "方案"
+
+msgctxt "model:ir.model.button,string:activity_split_button"
+msgid "Split"
+msgstr "拆分"
+
+msgctxt "model:ir.rule.group,name:rule_group_activity_companies"
+msgid "User in companies"
+msgstr "公司中的用户"
+
+msgctxt "model:ir.sequence,name:sequence_activity"
+msgid "Activity"
+msgstr "活动"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_activity"
+msgid "Activity"
+msgstr "活动"
+
+msgctxt "model:ir.ui.menu,name:menu_activity"
+msgid "Activities"
+msgstr "活动"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_activity"
+msgid "Activities"
+msgstr "活动"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_calendar"
+msgid "Activities"
+msgstr "活动"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_configuration"
+msgid "Configuration"
+msgstr "设置"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_reference"
+msgid "Activity Reference"
+msgstr "活动参考"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_type"
+msgid "Activity Type"
+msgstr "活动类型"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "设置"
+
+msgctxt "model:res.group,name:group_activity"
+msgid "Activities"
+msgstr "活动"
+
+msgctxt "model:res.group,name:group_activity_admin"
+msgid "Activities Administration"
+msgstr "活动管理"
+
+msgctxt "selection:activity.activity,state:"
+msgid "Held"
+msgstr "已举行"
+
+msgctxt "selection:activity.activity,state:"
+msgid "Not Held"
+msgstr "未举行"
+
+msgctxt "selection:activity.activity,state:"
+msgid "Planned"
+msgstr "已计划"
+
+msgctxt "view:activity.activity:"
+msgid "& Time:"
+msgstr "及时间："
+
+msgctxt "view:activity.activity:"
+msgid "Date"
+msgstr "日期"
+
+msgctxt "view:activity.configuration:"
+msgid "Activity Configuration"
+msgstr "活动配置"
+
+msgctxt "view:activity.reference:"
+msgid "Activity Reference"
+msgstr "活动参考"
+
+msgctxt "view:activity.type:"
+msgid "Activity Type"
+msgstr "活动类型"

@@ -1,0 +1,353 @@
+#
+msgid ""
+msgstr ""
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgctxt "field:activity.activity,activity_type:"
+msgid "Type"
+msgstr "Típus"
+
+msgctxt "field:activity.activity,calendar_background_color:"
+msgid "Background Color"
+msgstr "Háttérszín"
+
+msgctxt "field:activity.activity,calendar_color:"
+msgid "Color"
+msgstr "Szín"
+
+msgctxt "field:activity.activity,code:"
+msgid "Code"
+msgstr "Kód"
+
+msgctxt "field:activity.activity,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:activity.activity,date:"
+msgid "Date"
+msgstr "Dátum"
+
+msgctxt "field:activity.activity,day_busy_hours:"
+msgid "Day Busy Hours"
+msgstr "Napi foglalt órák"
+
+msgctxt "field:activity.activity,description:"
+msgid "Description"
+msgstr "Leírás"
+
+msgctxt "field:activity.activity,dtend:"
+msgid "End Date"
+msgstr "Befejező dátum"
+
+msgctxt "field:activity.activity,dtstart:"
+msgid "Start Date"
+msgstr "Kezdődátum"
+
+msgctxt "field:activity.activity,duration:"
+msgid "Duration"
+msgstr "Időtartam"
+
+msgctxt "field:activity.activity,employee:"
+msgid "Employee"
+msgstr "Alkalmazott"
+
+msgctxt "field:activity.activity,html:"
+msgid "HTML"
+msgstr "HTML"
+
+msgctxt "field:activity.activity,location:"
+msgid "Location"
+msgstr "Tárhely"
+
+msgctxt "field:activity.activity,mine:"
+msgid "Mine"
+msgstr "Saját"
+
+msgctxt "field:activity.activity,origin:"
+msgid "Origin"
+msgstr "Eredet"
+
+msgctxt "field:activity.activity,party:"
+msgid "Party"
+msgstr "Ügyfél"
+
+msgctxt "field:activity.activity,resource:"
+msgid "Resource"
+msgstr "Elem"
+
+msgctxt "field:activity.activity,state:"
+msgid "State"
+msgstr "Állapot"
+
+msgctxt "field:activity.activity,subject:"
+msgid "Subject"
+msgstr "Tárgy"
+
+msgctxt "field:activity.activity,summary:"
+msgid "Summary"
+msgstr "Leírás"
+
+msgctxt "field:activity.activity,time:"
+msgid "Time"
+msgstr "Időpont"
+
+msgctxt "field:activity.calendar.context,activity_color_type:"
+msgid "Use Type Color"
+msgstr "Típus színének használata"
+
+msgctxt "field:activity.configuration,activity_sequence:"
+msgid "Activity Sequence"
+msgstr "Tevékenység sorszámozása"
+
+msgctxt "field:activity.configuration.sequence,activity_sequence:"
+msgid "Activity Sequence"
+msgstr "Tevékenység sorszámozása"
+
+msgctxt "field:activity.configuration.sequence,company:"
+msgid "Company"
+msgstr "Cég"
+
+msgctxt "field:activity.reference,model:"
+msgid "Model"
+msgstr "Minta"
+
+msgctxt "field:activity.type,color:"
+msgid "Color"
+msgstr "Szín"
+
+msgctxt "field:activity.type,default_description:"
+msgid "Default Description"
+msgstr "Alapértelmezett leírás"
+
+msgctxt "field:activity.type,default_duration:"
+msgid "Default Duration"
+msgstr "Alapértelmezett időtartam"
+
+msgctxt "field:activity.type,name:"
+msgid "Name"
+msgstr "Név"
+
+msgctxt "field:company.employee,color:"
+msgid "Color"
+msgstr "Szín"
+
+msgctxt "field:party.party,activities:"
+msgid "Activities"
+msgstr "Tevékenységek"
+
+msgctxt "help:activity.activity,mine:"
+msgid "Activities assigned to me."
+msgstr "Hozzám rendelt tevékenységek."
+
+msgctxt "help:activity.calendar.context,activity_color_type:"
+msgid ""
+"If checked, uses the color of the type of the activity as event background. "
+"Otherwise uses the color defined in the employee."
+msgstr ""
+"Ha be van jelölve, az esemény háttérszíne a tevékenységtípus színe lesz. "
+"Ellenkező esetben a munkavállalónál megadott színt használja."
+
+msgctxt "help:activity.type,color:"
+msgid "HTML color (hexadecimal)"
+msgstr "HTML-szín (hexadecimális)"
+
+msgctxt "model:activity.activity,name:"
+msgid "Activity"
+msgstr "Tevékenység"
+
+msgctxt "model:activity.calendar.context,name:"
+msgid "Activity Calendar Context"
+msgstr "Tevékenységnaptár környezete"
+
+msgctxt "model:activity.configuration,name:"
+msgid "Activity Configuration"
+msgstr "Tevékenység beállításai"
+
+msgctxt "model:activity.configuration.sequence,name:"
+msgid "Activity Sequence Configuration"
+msgstr "Tevékenység sorszámozásának beállítása"
+
+msgctxt "model:activity.reference,name:"
+msgid "Activity Reference"
+msgstr "Tevékenységhivatkozás"
+
+msgctxt "model:activity.type,name:"
+msgid "Activity Type"
+msgstr "Tevékenységtípus"
+
+msgctxt "model:activity.type,name:incoming_call_type"
+msgid "Incoming Call"
+msgstr "Bejövő hívás"
+
+msgctxt "model:activity.type,name:incoming_email_type"
+msgid "Incoming Email"
+msgstr "Bejövő e-mail"
+
+msgctxt "model:activity.type,name:meeting_type"
+msgid "Meeting"
+msgstr "Értekezlet"
+
+msgctxt "model:activity.type,name:outgoing_call_type"
+msgid "Outgoing Call"
+msgstr "Kimenő hívás"
+
+msgctxt "model:activity.type,name:outgoing_email_type"
+msgid "Outgoing Email"
+msgstr "Kimenő e-mail"
+
+msgctxt "model:ir.action,name:act_activity_activity"
+msgid "Activity"
+msgstr "Tevékenység"
+
+msgctxt "model:ir.action,name:act_activity_calendar"
+msgid "Activities"
+msgstr "Tevékenységek"
+
+msgctxt "model:ir.action,name:act_activity_configuration"
+msgid "Configuration"
+msgstr "Beállítások"
+
+msgctxt "model:ir.action,name:act_activity_form"
+msgid "Activities"
+msgstr "Tevékenységek"
+
+msgctxt "model:ir.action,name:act_activity_reference"
+msgid "Activity Reference"
+msgstr "Tevékenységhivatkozás"
+
+msgctxt "model:ir.action,name:act_activity_type"
+msgid "Activity Type"
+msgstr "Tevékenységtípus"
+
+msgctxt "model:ir.action,name:act_split_relate"
+msgid "Sub Activities"
+msgstr "Altevékenységek"
+
+msgctxt "model:ir.action.act_window.domain,name:"
+msgid "Held"
+msgstr "Megtartva"
+
+msgctxt "model:ir.action.act_window.domain,name:act_activity_domain_all"
+msgid "All"
+msgstr "összes"
+
+msgctxt "model:ir.action.act_window.domain,name:act_activity_domain_pending"
+msgid "Planned Today"
+msgstr "Mára tervezve"
+
+msgctxt "model:ir.action.act_window.domain,name:act_activity_domain_planned"
+msgid "Planned"
+msgstr "Tervezve"
+
+#, python-format
+msgctxt "model:ir.message,text:create_subactivities"
+msgid "Are you sure you want to create \"%(count)s\" activities?"
+msgstr "Biztosan létrehoz „%(count)s” tevékenységet?"
+
+msgctxt "model:ir.message,text:no_activity_sequence"
+msgid ""
+"There is no activity sequence defined. Please define on in activity "
+"configuration."
+msgstr ""
+"Nincs megadva tevékenység-sorszámozás. Adjon meg egyet a tevékenység "
+"beállításainál."
+
+msgctxt "model:ir.model.button,string:activity_cancel_button"
+msgid "Cancel"
+msgstr "Mégse"
+
+msgctxt "model:ir.model.button,string:activity_do_button"
+msgid "Do"
+msgstr "Végrehajtás"
+
+msgctxt "model:ir.model.button,string:activity_plan_button"
+msgid "Plan"
+msgstr "Tervezés"
+
+msgctxt "model:ir.model.button,string:activity_split_button"
+msgid "Split"
+msgstr "Felosztás"
+
+msgctxt "model:ir.rule.group,name:rule_group_activity_companies"
+msgid "User in companies"
+msgstr "Felhasználó vállalatai"
+
+msgctxt "model:ir.sequence,name:sequence_activity"
+msgid "Activity"
+msgstr "Tevékenység"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_activity"
+msgid "Activity"
+msgstr "Tevékenység"
+
+msgctxt "model:ir.ui.menu,name:menu_activity"
+msgid "Activities"
+msgstr "Tevékenységek"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_activity"
+msgid "Activities"
+msgstr "Tevékenységek"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_calendar"
+msgid "Activities"
+msgstr "Tevékenységek"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_configuration"
+msgid "Configuration"
+msgstr "Beállítások"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_reference"
+msgid "Activity Reference"
+msgstr "Tevékenységhivatkozás"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_type"
+msgid "Activity Type"
+msgstr "Tevékenységtípus"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Beállítások"
+
+msgctxt "model:res.group,name:group_activity"
+msgid "Activities"
+msgstr "Tevékenységek"
+
+msgctxt "model:res.group,name:group_activity_admin"
+msgid "Activities Administration"
+msgstr "Tevékenységek kezelése"
+
+msgctxt "selection:activity.activity,state:"
+msgid "Held"
+msgstr "Megtartva"
+
+msgctxt "selection:activity.activity,state:"
+msgid "Not Held"
+msgstr "Nem megtartott"
+
+msgctxt "selection:activity.activity,state:"
+msgid "Planned"
+msgstr "Tervezve"
+
+msgctxt "view:activity.activity:"
+msgid "& Time:"
+msgstr "és idő:"
+
+msgctxt "view:activity.activity:"
+msgid "Date"
+msgstr "Dátum"
+
+msgctxt "view:activity.configuration:"
+msgid "Activity Configuration"
+msgstr "Tevékenység beállításai"
+
+msgctxt "view:activity.reference:"
+msgid "Activity Reference"
+msgstr "Tevékenységhivatkozás"
+
+msgctxt "view:activity.type:"
+msgid "Activity Type"
+msgstr "Tevékenységtípus"

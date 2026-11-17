@@ -462,7 +462,8 @@ class Activity(Workflow, ModelSQL, ModelView):
             else:
                 dtstart = record.dtstart if record else None
 
-        if 'dtend' in values:
+        if ('dtend' in values
+                and (values['dtend'] is not None or 'duration' not in values)):
             dtend = values['dtend']
             values['duration'] = (
                 dtend - dtstart if dtend and dtstart else None)

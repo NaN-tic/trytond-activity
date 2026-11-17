@@ -81,10 +81,30 @@ class TestActivityTimezones(unittest.TestCase):
             self.assertEqual(activity.duration, datetime.timedelta(minutes=45))
             self.assertEqual(activity.dtstart, utc)
 
+        # The form client sends an empty dtend when creating a new activity.
+        # It must not override the duration entered by the user.
+        duration = datetime.timedelta(hours=1)
+        with Transaction().start(config.database_name, config.user,
+                context=dict(config.context, company=company.id)):
+            ActivityModel = Pool().get('activity.activity')
+            created, = ActivityModel.create([{
+                        'activity_type': kind.id, 'employee': employee.id,
+                        'company': company.id,
+                        'date': datetime.date(2026, 9, 30),
+                        'time': datetime.time(10), 'duration': duration,
+                        'dtend': None,
+                        }])
+            self.assertEqual(created.duration, duration)
+            self.assertEqual(
+                created.dtend, datetime.datetime(2026, 9, 30, 9))
+
         manual = Activity(activity_type=kind, employee=employee, company=company,
-            date=datetime.date(2026, 9, 30), time=datetime.time(10))
+            date=datetime.date(2026, 9, 30), time=datetime.time(10),
+            duration=datetime.timedelta(hours=1))
         manual.save()
         self.assertEqual(manual.dtstart, datetime.datetime(2026, 9, 30, 8))
+        self.assertEqual(manual.duration, datetime.timedelta(hours=1))
+        self.assertEqual(manual.dtend, datetime.datetime(2026, 9, 30, 9))
         manual.time = None
         manual.save()
         self.assertIsNone(manual.time)

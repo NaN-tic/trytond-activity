@@ -1,0 +1,351 @@
+#
+msgid ""
+msgstr ""
+"Language: km\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+msgctxt "field:activity.activity,activity_type:"
+msgid "Type"
+msgstr "ប្រភេទ"
+
+msgctxt "field:activity.activity,calendar_background_color:"
+msgid "Background Color"
+msgstr "ពណ៌ផ្ទៃខាងក្រោយ"
+
+msgctxt "field:activity.activity,calendar_color:"
+msgid "Color"
+msgstr "ពណ៌"
+
+msgctxt "field:activity.activity,code:"
+msgid "Code"
+msgstr "កូដ"
+
+msgctxt "field:activity.activity,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:activity.activity,date:"
+msgid "Date"
+msgstr "កាលបរិច្ឆេទ"
+
+msgctxt "field:activity.activity,day_busy_hours:"
+msgid "Day Busy Hours"
+msgstr "ម៉ោងដែលរវល់ក្នុងមួយថ្ងៃ"
+
+msgctxt "field:activity.activity,description:"
+msgid "Description"
+msgstr "សេចក្តីពិពណ៌នា"
+
+msgctxt "field:activity.activity,dtend:"
+msgid "End Date"
+msgstr "កាលបរិច្ឆេទបញ្ចប់"
+
+msgctxt "field:activity.activity,dtstart:"
+msgid "Start Date"
+msgstr "កាលបរិច្ឆេទចាប់ផ្តើម"
+
+msgctxt "field:activity.activity,duration:"
+msgid "Duration"
+msgstr "រយៈពេល"
+
+msgctxt "field:activity.activity,employee:"
+msgid "Employee"
+msgstr "និយោជិត"
+
+msgctxt "field:activity.activity,html:"
+msgid "HTML"
+msgstr "HTML"
+
+msgctxt "field:activity.activity,location:"
+msgid "Location"
+msgstr "ទីតាំង"
+
+msgctxt "field:activity.activity,mine:"
+msgid "Mine"
+msgstr "របស់ខ្ញុំ"
+
+msgctxt "field:activity.activity,origin:"
+msgid "Origin"
+msgstr "ប្រភពដើម"
+
+msgctxt "field:activity.activity,party:"
+msgid "Party"
+msgstr "ភាគី"
+
+msgctxt "field:activity.activity,resource:"
+msgid "Resource"
+msgstr "ធនធាន"
+
+msgctxt "field:activity.activity,state:"
+msgid "State"
+msgstr "ស្ថានភាព"
+
+msgctxt "field:activity.activity,subject:"
+msgid "Subject"
+msgstr "ប្រធានបទ"
+
+msgctxt "field:activity.activity,summary:"
+msgid "Summary"
+msgstr "សេចក្តីសង្ខេប"
+
+msgctxt "field:activity.activity,time:"
+msgid "Time"
+msgstr "ពេលវេលា"
+
+msgctxt "field:activity.calendar.context,activity_color_type:"
+msgid "Use Type Color"
+msgstr "ប្រើពណ៌តាមប្រភេទ"
+
+msgctxt "field:activity.configuration,activity_sequence:"
+msgid "Activity Sequence"
+msgstr "លំដាប់លេខសកម្មភាព"
+
+msgctxt "field:activity.configuration.sequence,activity_sequence:"
+msgid "Activity Sequence"
+msgstr "លំដាប់លេខសកម្មភាព"
+
+msgctxt "field:activity.configuration.sequence,company:"
+msgid "Company"
+msgstr "ក្រុមហ៊ុន"
+
+msgctxt "field:activity.reference,model:"
+msgid "Model"
+msgstr "ម៉ូដែល"
+
+msgctxt "field:activity.type,color:"
+msgid "Color"
+msgstr "ពណ៌"
+
+msgctxt "field:activity.type,default_description:"
+msgid "Default Description"
+msgstr "សេចក្តីពិពណ៌នាលំនាំដើម"
+
+msgctxt "field:activity.type,default_duration:"
+msgid "Default Duration"
+msgstr "រយៈពេលលំនាំដើម"
+
+msgctxt "field:activity.type,name:"
+msgid "Name"
+msgstr "ឈ្មោះ"
+
+msgctxt "field:company.employee,color:"
+msgid "Color"
+msgstr "ពណ៌"
+
+msgctxt "field:party.party,activities:"
+msgid "Activities"
+msgstr "សកម្មភាព"
+
+msgctxt "help:activity.activity,mine:"
+msgid "Activities assigned to me."
+msgstr "សកម្មភាពដែលបានប្រគល់ឱ្យខ្ញុំ។"
+
+msgctxt "help:activity.calendar.context,activity_color_type:"
+msgid ""
+"If checked, uses the color of the type of the activity as event background. "
+"Otherwise uses the color defined in the employee."
+msgstr ""
+"បើធីក ប្រើពណ៌របស់ប្រភេទសកម្មភាពជាផ្ទៃខាងក្រោយព្រឹត្តិការណ៍។ បើមិនធីក "
+"ប្រើពណ៌ដែលបានកំណត់សម្រាប់និយោជិត។"
+
+msgctxt "help:activity.type,color:"
+msgid "HTML color (hexadecimal)"
+msgstr "ពណ៌ HTML (គោលដប់ប្រាំមួយ)"
+
+msgctxt "model:activity.activity,name:"
+msgid "Activity"
+msgstr "សកម្មភាព"
+
+msgctxt "model:activity.calendar.context,name:"
+msgid "Activity Calendar Context"
+msgstr "បរិបទប្រតិទិនសកម្មភាព"
+
+msgctxt "model:activity.configuration,name:"
+msgid "Activity Configuration"
+msgstr "ការកំណត់សកម្មភាព"
+
+msgctxt "model:activity.configuration.sequence,name:"
+msgid "Activity Sequence Configuration"
+msgstr "ការកំណត់លំដាប់លេខសកម្មភាព"
+
+msgctxt "model:activity.reference,name:"
+msgid "Activity Reference"
+msgstr "ឯកសារយោងសកម្មភាព"
+
+msgctxt "model:activity.type,name:"
+msgid "Activity Type"
+msgstr "ប្រភេទសកម្មភាព"
+
+msgctxt "model:activity.type,name:incoming_call_type"
+msgid "Incoming Call"
+msgstr "ការហៅចូល"
+
+msgctxt "model:activity.type,name:incoming_email_type"
+msgid "Incoming Email"
+msgstr "អ៊ីមែលចូល"
+
+msgctxt "model:activity.type,name:meeting_type"
+msgid "Meeting"
+msgstr "កិច្ចប្រជុំ"
+
+msgctxt "model:activity.type,name:outgoing_call_type"
+msgid "Outgoing Call"
+msgstr "ការហៅចេញ"
+
+msgctxt "model:activity.type,name:outgoing_email_type"
+msgid "Outgoing Email"
+msgstr "អ៊ីមែលចេញ"
+
+msgctxt "model:ir.action,name:act_activity_activity"
+msgid "Activity"
+msgstr "សកម្មភាព"
+
+msgctxt "model:ir.action,name:act_activity_calendar"
+msgid "Activities"
+msgstr "សកម្មភាព"
+
+msgctxt "model:ir.action,name:act_activity_configuration"
+msgid "Configuration"
+msgstr "ការកំណត់រចនាសម្ព័ន្ធ"
+
+msgctxt "model:ir.action,name:act_activity_form"
+msgid "Activities"
+msgstr "សកម្មភាព"
+
+msgctxt "model:ir.action,name:act_activity_reference"
+msgid "Activity Reference"
+msgstr "ឯកសារយោងសកម្មភាព"
+
+msgctxt "model:ir.action,name:act_activity_type"
+msgid "Activity Type"
+msgstr "ប្រភេទសកម្មភាព"
+
+msgctxt "model:ir.action,name:act_split_relate"
+msgid "Sub Activities"
+msgstr "សកម្មភាពរង"
+
+msgctxt "model:ir.action.act_window.domain,name:"
+msgid "Held"
+msgstr "បានប្រព្រឹត្តទៅ"
+
+msgctxt "model:ir.action.act_window.domain,name:act_activity_domain_all"
+msgid "All"
+msgstr "ទាំងអស់"
+
+msgctxt "model:ir.action.act_window.domain,name:act_activity_domain_pending"
+msgid "Planned Today"
+msgstr "បានគ្រោងសម្រាប់ថ្ងៃនេះ"
+
+msgctxt "model:ir.action.act_window.domain,name:act_activity_domain_planned"
+msgid "Planned"
+msgstr "បានគ្រោងទុក"
+
+#, python-format
+msgctxt "model:ir.message,text:create_subactivities"
+msgid "Are you sure you want to create \"%(count)s\" activities?"
+msgstr "តើអ្នកពិតជាចង់បង្កើតសកម្មភាព «%(count)s» ឬទេ?"
+
+msgctxt "model:ir.message,text:no_activity_sequence"
+msgid ""
+"There is no activity sequence defined. Please define on in activity "
+"configuration."
+msgstr "មិនទាន់កំណត់លំដាប់លេខសកម្មភាពទេ។ សូមកំណត់ក្នុងការកំណត់សកម្មភាព។"
+
+msgctxt "model:ir.model.button,string:activity_cancel_button"
+msgid "Cancel"
+msgstr "បោះបង់"
+
+msgctxt "model:ir.model.button,string:activity_do_button"
+msgid "Do"
+msgstr "អនុវត្ត"
+
+msgctxt "model:ir.model.button,string:activity_plan_button"
+msgid "Plan"
+msgstr "ផែនការ"
+
+msgctxt "model:ir.model.button,string:activity_split_button"
+msgid "Split"
+msgstr "បំបែក"
+
+msgctxt "model:ir.rule.group,name:rule_group_activity_companies"
+msgid "User in companies"
+msgstr "អ្នកប្រើប្រាស់ក្នុងក្រុមហ៊ុន"
+
+msgctxt "model:ir.sequence,name:sequence_activity"
+msgid "Activity"
+msgstr "សកម្មភាព"
+
+msgctxt "model:ir.sequence.type,name:sequence_type_activity"
+msgid "Activity"
+msgstr "សកម្មភាព"
+
+msgctxt "model:ir.ui.menu,name:menu_activity"
+msgid "Activities"
+msgstr "សកម្មភាព"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_activity"
+msgid "Activities"
+msgstr "សកម្មភាព"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_calendar"
+msgid "Activities"
+msgstr "សកម្មភាព"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_configuration"
+msgid "Configuration"
+msgstr "ការកំណត់រចនាសម្ព័ន្ធ"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_reference"
+msgid "Activity Reference"
+msgstr "ឯកសារយោងសកម្មភាព"
+
+msgctxt "model:ir.ui.menu,name:menu_activity_type"
+msgid "Activity Type"
+msgstr "ប្រភេទសកម្មភាព"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "ការកំណត់រចនាសម្ព័ន្ធ"
+
+msgctxt "model:res.group,name:group_activity"
+msgid "Activities"
+msgstr "សកម្មភាព"
+
+msgctxt "model:res.group,name:group_activity_admin"
+msgid "Activities Administration"
+msgstr "ការគ្រប់គ្រងសកម្មភាព"
+
+msgctxt "selection:activity.activity,state:"
+msgid "Held"
+msgstr "បានប្រព្រឹត្តទៅ"
+
+msgctxt "selection:activity.activity,state:"
+msgid "Not Held"
+msgstr "មិនបានប្រព្រឹត្តទៅ"
+
+msgctxt "selection:activity.activity,state:"
+msgid "Planned"
+msgstr "បានគ្រោងទុក"
+
+msgctxt "view:activity.activity:"
+msgid "& Time:"
+msgstr "និងពេលវេលា៖"
+
+msgctxt "view:activity.activity:"
+msgid "Date"
+msgstr "កាលបរិច្ឆេទ"
+
+msgctxt "view:activity.configuration:"
+msgid "Activity Configuration"
+msgstr "ការកំណត់សកម្មភាព"
+
+msgctxt "view:activity.reference:"
+msgid "Activity Reference"
+msgstr "ឯកសារយោងសកម្មភាព"
+
+msgctxt "view:activity.type:"
+msgid "Activity Type"
+msgstr "ប្រភេទសកម្មភាព"
